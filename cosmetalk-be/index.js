@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
 import { makeupRoute } from "./routers/makeupRouter.js";
+import { skincareRoute } from "./routers/skincareRouter.js";
 
 const app = express();
-
 
 app.use(express.json());
 app.use(cors());
 app.use("makeup", makeupRoute);
+app.use("skincare", skincareRoute);
 
 mongoose
   .connect(process.env.DB_SECRET_KEY)
