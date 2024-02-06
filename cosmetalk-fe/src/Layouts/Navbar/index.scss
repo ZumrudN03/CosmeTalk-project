@@ -1,0 +1,59 @@
+.navbar{
+    max-width: 90%;
+    margin: 0 auto;
+    &_logo{
+        display: flex;
+        justify-content: center;
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    }
+    &_menu{
+        display: flex;
+        justify-content: space-between;
+        &_icons{
+            display: flex;
+            gap: 20px;
+            i{
+                font-size: 14px;
+                transition: 300ms;
+                cursor: pointer;
+                &:hover{
+                    color: #F6C4A7;
+                }
+            }
+        }
+        ul{
+            display: flex;
+            gap: 40px;
+            li{
+                font-family: 'Nunito', sans-serif;
+                font-size: 13px;
+                font-weight: 700;
+                transition: 300ms;
+                &:hover{
+                    color: #F6C4A7;
+                }
+            }
+        }
+        &_search{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            i{
+                font-size: 14px;
+                transition: 300ms;
+                cursor: pointer;
+                &:hover{
+                    color: #F6C4A7;
+                }
+            }
+            .fa-heart{
+                padding: 0px 10px;
+                border-left: 2px solid lightgray;
+                border-right: 2px solid lightgray;
+            }
+        }
+    }
+}
