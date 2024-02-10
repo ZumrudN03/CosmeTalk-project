@@ -1,0 +1,87 @@
+.featuredProductsCards {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0px;
+  .featuredProductsCard {
+    width: 260px;
+    color: white;
+    &_img {
+      width: 260px;
+      height: 260px;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+      &:hover .featuredProductsCard_hover {
+        opacity: 1;
+      }
+      img {
+        width: 260px;
+        height: 260px;
+        object-fit: contain;
+        transition: 600ms;
+        &:hover {
+          scale: 1.05;
+        }
+      }
+      .featuredProductsCard_hover {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 400ms;
+
+        .featuredProductsCard_hover_btn {
+          padding: 10px 20px;
+          font-size: 11px;
+          letter-spacing: 1px;
+          font-weight: 700;
+          border: none;
+          background-color: white;
+          transition: 400ms;
+          &:hover {
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+    }
+    &_categories {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 15px 0px;
+      .fa-angle-right {
+        font-size: 12px;
+      }
+      .featuredProductsCard_category {
+        font-size: 12px;
+        cursor: pointer;
+        transition: 300ms;
+        &:hover {
+          color: #f6c4a7;
+        }
+        span {
+          color: rgb(153, 153, 153);
+          font-family: "Dancing Script", cursive;
+          font-size: 16px;
+        }
+      }
+      .featuredProductsCard_subCategory {
+        font-size: 12px;
+        cursor: pointer;
+        transition: 300ms;
+        &:hover {
+          color: #f6c4a7;
+        }
+      }
+    }
+    &_name {
+      font-size: 18px;
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+  }
+}

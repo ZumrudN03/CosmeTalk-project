@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import FeaturedProductsSection from "../../Components/HomeComponents/FeaturedProductsSection";
 
 function Home() {
   return (
@@ -7,6 +8,9 @@ function Home() {
       <Helmet>
         <title>Home</title>
       </Helmet>
+      <div className="home">
+        <FeaturedProductsSection/>
+      </div>
     </>
   );
 }

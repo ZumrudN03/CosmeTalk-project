@@ -10,10 +10,18 @@ function Navbar() {
       </div>
       <div className="navbar_menu">
         <div className="navbar_menu_icons">
-          <i className="fa-brands fa-facebook-f"></i>
-          <i className="fa-brands fa-x-twitter"></i>
-          <i className="fa-brands fa-instagram"></i>
-          <i className="fa-brands fa-pinterest"></i>
+          <Link to={"https://www.facebook.com/"}>
+            <i className="fa-brands fa-facebook-f"></i>
+          </Link>
+          <Link to={"https://twitter.com/?lang=en"}>
+            <i className="fa-brands fa-x-twitter"></i>
+          </Link>
+          <Link to={"https://www.instagram.com/"}>
+            <i className="fa-brands fa-instagram"></i>
+          </Link>
+          <Link to={"https://www.pinterest.com/"}>
+            <i className="fa-brands fa-pinterest"></i>
+          </Link>
         </div>
         <ul>
           <li>
@@ -78,7 +86,7 @@ function Navbar() {
           </li>
         </ul>
         <div className="navbar_menu_search">
-        <i className="fa-regular fa-user"></i>
+          <i className="fa-regular fa-user"></i>
           <Link to={"/wishlist"}>
             <i className="fa-regular fa-heart"></i>
           </Link>

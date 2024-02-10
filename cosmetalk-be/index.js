@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("makeup", makeupRoute);
-app.use("skincare", skincareRoute);
+app.use("/makeup", makeupRoute);
+app.use("/skincare", skincareRoute);
 
 mongoose
   .connect(process.env.DB_SECRET_KEY)
