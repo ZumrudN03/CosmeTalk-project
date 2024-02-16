@@ -1,58 +1,109 @@
-.navbar{
-    max-width: 90%;
-    margin: 0 auto;
-    &_logo{
-        display: flex;
-        justify-content: center;
-        img{
-            width: 150px;
-            height: 150px;
-        }
+.navbar_container {
+  max-width: 90%;
+  margin: 0 auto;
+  .navbar_logo {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 150px;
+      height: 150px;
     }
-    &_menu{
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    &_icons {
+      display: flex;
+      gap: 20px;
+      i {
+        font-size: 14px;
+        transition: 300ms;
+        cursor: pointer;
+        &:hover {
+          color: #f6c4a7;
+        }
+      }
+    }
+    &_navmenu {
+      position: relative;
+      ul {
         display: flex;
+        gap: 40px;
+        li {
+          font-size: 13px;
+          font-weight: 700;
+          transition: 300ms;
+          &:hover {
+            color: #f6c4a7;
+          }
+        }
+      }
+      .navmenu_hover_reviews {
+        display: flex;
+        width: 450px;
+        height: 200px;
+        border: 1px solid lightgray;
         justify-content: space-between;
-        &_icons{
-            display: flex;
-            gap: 20px;
-            i{
-                font-size: 14px;
-                transition: 300ms;
-                cursor: pointer;
-                &:hover{
-                    color: #F6C4A7;
-                }
+        padding: 15px;
+        position: absolute;
+        z-index: 2;
+        background-color: white;
+        left: 50px;
+        top: 30px;
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          .navmenu_hover_reviews_title {
+            padding-bottom: 8px;
+            border-bottom: 1px solid lightgray;
+            font-size: 12px;
+            font-weight: 800;
+            color: #262626;
+          }
+          li {
+            font-size: 11px;
+            color: #545454;
+            cursor: pointer;
+            font-weight: 400;
+            transition: 300ms;
+            &:hover {
+              color: #f6c4a7;
             }
+          }
         }
-        ul{
-            display: flex;
-            gap: 40px;
-            li{
-                font-size: 13px;
-                font-weight: 700;
-                transition: 300ms;
-                &:hover{
-                    color: #F6C4A7;
-                }
-            }
+        p {
+          padding-bottom: 8px;
+          border-bottom: 1px solid lightgray;
+          font-size: 12px;
+          font-weight: 800;
+          color: #262626;
+          cursor: pointer;
+          transition: 300ms;
+          &:hover {
+            color: #f6c4a7;
+          }
         }
-        &_search{
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            i{
-                font-size: 14px;
-                transition: 300ms;
-                cursor: pointer;
-                &:hover{
-                    color: #F6C4A7;
-                }
-            }
-            .fa-heart{
-                padding: 0px 10px;
-                border-left: 2px solid lightgray;
-                border-right: 2px solid lightgray;
-            }
-        }
+      }
     }
+    &_search {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      i {
+        font-size: 14px;
+        transition: 300ms;
+        cursor: pointer;
+        &:hover {
+          color: #f6c4a7;
+        }
+      }
+      .fa-heart {
+        padding: 0px 10px;
+        border-left: 2px solid lightgray;
+        border-right: 2px solid lightgray;
+      }
+    }
+  }
 }
+

@@ -19,7 +19,7 @@ function About() {
         <div className="about_location">
           <Link to={"/"}><p className="about_location_home">Home</p></Link>
           <p className="about_location_about">About</p>
-        </div>
+        </div> 
       </div>
       <div>
         <WelcomeCosmeTalkSection />

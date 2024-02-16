@@ -5,8 +5,9 @@ import Brands from "./Pages/Brands";
 import "./assets/reset.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./Pages/About";
-import Contact from "./Pages/Contact";
 import Wishlist from "./Pages/Wishlist";
+import Blog from "./Pages/Blog";
+import BlogDetail from "./Pages/BlogDetail";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/blogdetail/:id" element={<BlogDetail />} />
           {/* <Route path="*" element={<NoPage />} /> */}
           </Route>
         </Routes>
