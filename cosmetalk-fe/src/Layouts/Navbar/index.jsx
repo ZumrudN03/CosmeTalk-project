@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./index.scss";
 
@@ -37,8 +37,29 @@ function Navbar() {
                 HOME
               </NavLink>
             </li>
-            <li onMouseOver={console.log("aadsadas")} id="review_hover">
-              REVIEWS
+            <li>
+              <NavLink
+                to="/makeupreviews"
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "#F6C4A7" : "",
+                  };
+                }}
+              >
+                MAKEUP
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/skincarereviews"
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "#F6C4A7" : "",
+                  };
+                }}
+              >
+                SKINCARE
+              </NavLink>
             </li>
             <li>
               <NavLink
@@ -77,21 +98,6 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <div className="navmenu_hover_reviews">
-            <p>ALL</p>
-            <ul>
-              <li className="navmenu_hover_reviews_title">MAKEUP</li>
-              <li>FACE</li>
-              <li>EYES</li>
-              <li>LIPS</li>
-            </ul>
-            <ul>
-              <li className="navmenu_hover_reviews_title">SKINCARE</li>
-              <li>FACE</li>
-              <li>EYES</li>
-              <li>LIPS</li>
-            </ul>
-          </div>
         </div>
         <div className="navbar_search">
           <i className="fa-regular fa-user"></i>

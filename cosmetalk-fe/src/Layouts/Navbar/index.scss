@@ -38,53 +38,6 @@
           }
         }
       }
-      .navmenu_hover_reviews {
-        display: flex;
-        width: 450px;
-        height: 200px;
-        border: 1px solid lightgray;
-        justify-content: space-between;
-        padding: 15px;
-        position: absolute;
-        z-index: 2;
-        background-color: white;
-        left: 50px;
-        top: 30px;
-        ul {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          .navmenu_hover_reviews_title {
-            padding-bottom: 8px;
-            border-bottom: 1px solid lightgray;
-            font-size: 12px;
-            font-weight: 800;
-            color: #262626;
-          }
-          li {
-            font-size: 11px;
-            color: #545454;
-            cursor: pointer;
-            font-weight: 400;
-            transition: 300ms;
-            &:hover {
-              color: #f6c4a7;
-            }
-          }
-        }
-        p {
-          padding-bottom: 8px;
-          border-bottom: 1px solid lightgray;
-          font-size: 12px;
-          font-weight: 800;
-          color: #262626;
-          cursor: pointer;
-          transition: 300ms;
-          &:hover {
-            color: #f6c4a7;
-          }
-        }
-      }
     }
     &_search {
       display: flex;
@@ -106,4 +59,3 @@
     }
   }
 }
-
