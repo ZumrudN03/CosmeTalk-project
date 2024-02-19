@@ -9,13 +9,17 @@ import Blog from "./Pages/Blog";
 import BlogDetail from "./Pages/BlogDetail";
 import SkinCareReviews from "./Pages/SkinCareReviews";
 import MakeUpReviews from "./Pages/MakeUpReviews";
-import AdminPanel from "./Pages/AdminPanel";
+import AdminPanel from "./Pages/Admin/AdminPanel";
 import AdminLayout from "./Layouts/AdminLayout";
-import AdminMakeUp from "./Pages/AdminMakeUp";
-import AdminSkinCare from "./Pages/AdminSkinCare";
-import AdminBlog from "./Pages/AdminBlog";
-import AddMakeUp from "./Pages/AddMakeUp";
-import UpdateMakeUp from "./Pages/UpdateMakeUp";
+import AdminMakeUp from "./Pages/Admin/AdminMakeUp";
+import AdminSkinCare from "./Pages/Admin/AdminSkinCare";
+import AdminBlog from "./Pages/Admin/AdminBlog";
+import AddMakeUp from "./Pages/Admin/AddMakeUp";
+import UpdateMakeUp from "./Pages/Admin/UpdateMakeUp";
+import AddSkinCare from "./Pages/Admin/AddSkinCare";
+import AddBlog from "./Pages/Admin/AddBlog";
+import UpdateSkinCare from "./Pages/Admin/UpdateSkinCare";
+import UpdateBlog from "./Pages/Admin/UpdateBlog";
 
 function App() {
   return (
@@ -39,6 +43,10 @@ function App() {
             <Route path="/admin/blog" element={<AdminBlog/>}/>
             <Route path="/admin/addmakeup" element={<AddMakeUp/>}/>
             <Route path="/admin/updatemakeup/:id" element={<UpdateMakeUp/>}/>
+            <Route path="/admin/addskincare" element={<AddSkinCare/>}/>
+            <Route path="/admin/addblog" element={<AddBlog/>}/>
+            <Route path="/admin/updateskincare/:id" element={<UpdateSkinCare/>}/>
+            <Route path="/admin/updateblog/:id" element={<UpdateBlog/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

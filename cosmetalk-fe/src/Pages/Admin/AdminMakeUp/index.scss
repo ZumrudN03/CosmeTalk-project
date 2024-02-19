@@ -1,0 +1,64 @@
+.adminMakeUp {
+  margin: 0 auto;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0px;
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 5px;
+      font-size: 13px;
+      height: 80px;
+
+      .table_img {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+      }
+    }
+    .table_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      i {
+        cursor: pointer;
+        transition: 300ms;
+        &:hover {
+          color: #f6c4a7;
+        }
+      }
+    }
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px 5px;
+      font-size: 12px;
+      color: #f6c4a7;
+    }
+    tr:nth-child(even) {
+      background-color: #f6c4a735;
+    }
+  }
+
+  &_btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 20px 0px 0px;
+    button {
+      border: none;
+      padding: 5px 10px;
+      background-color: #262626;
+      color: white;
+      transition: 300ms;
+      &:hover{
+        background-color: black;
+      }
+    }
+  }
+}

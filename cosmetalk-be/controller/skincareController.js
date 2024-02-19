@@ -22,30 +22,38 @@ export const GetSkinCareProductByID = async (req, res) => {
 export const PostOneSkinCareProduct = async (req, res) => {
   try {
     const {
+      thumbnail,
+      image1,
+      image2,
+      image3,
+      image4,
       name,
       about,
       category,
+      subCategory,
       brand,
-      price,
       packSize,
-      TestedOnAnimals,
-      whereToBuy,
-      texture,
-      effect,
-      application
-    } = req.body;
-    const newSkinCare = new SkincareModel({
-      name,
-      about,
-      category,
-      brand,
       price,
-      packSize,
-      TestedOnAnimals,
-      whereToBuy,
-      effect,
       texture,
       application,
+      effect,
+    } = req.body;
+    const newSkinCare = new SkincareModel({
+      thumbnail,
+      image1,
+      image2,
+      image3,
+      image4,
+      name,
+      about,
+      category,
+      subCategory,
+      brand,
+      packSize,
+      price,
+      texture,
+      application,
+      effect,
     });
     await newSkinCare.save();
     res.send("New SkinCare Product Added!");
@@ -57,31 +65,39 @@ export const PostOneSkinCareProduct = async (req, res) => {
 export const UpdateSkinCareProductByID = async (req, res) => {
   try {
     const {
-        name,
-        about,
-        category,
-        brand,
-        price,
-        packSize,
-        TestedOnAnimals,
-        whereToBuy,
-        texture,
-        effect,
-        application
+      thumbnail,
+      image1,
+      image2,
+      image3,
+      image4,
+      name,
+      about,
+      category,
+      subCategory,
+      brand,
+      packSize,
+      price,
+      texture,
+      application,
+      effect,
     } = req.body;
     const { id } = req.params;
     const skincare = await SkincareModel.findByIdAndUpdate(id, {
-        name,
-        about,
-        category,
-        brand,
-        price,
-        packSize,
-        TestedOnAnimals,
-        whereToBuy,
-        texture,
-        effect,
-        application
+      thumbnail,
+      image1,
+      image2,
+      image3,
+      image4,
+      name,
+      about,
+      category,
+      subCategory,
+      brand,
+      packSize,
+      price,
+      texture,
+      application,
+      effect,
     });
     res.send("SkinCare Product Updated!");
   } catch (error) {

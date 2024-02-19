@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./index.scss"
 
 function UpdateMakeUp() {
   const { id } = useParams();
@@ -14,7 +15,6 @@ function UpdateMakeUp() {
   const [category, setcategory] = useState("");
   const [subCategory, setsubCategory] = useState("");
   const [brand, setbrand] = useState("");
-  const [packSize, setpackSize] = useState("");
   const [price, setprice] = useState("");
   const [pigmentation, setpigmentation] = useState("");
   const [texture, settexture] = useState("");
@@ -34,7 +34,6 @@ function UpdateMakeUp() {
     setcategory(data.category);
     setsubCategory(data.subCategory);
     setbrand(data.brand);
-    setpackSize(data.packSize);
     setprice(data.price);
     setpigmentation(data.pigmentation);
     settexture(data.texture);
@@ -59,7 +58,6 @@ function UpdateMakeUp() {
         category: category,
         subCategory: subCategory,
         brand: brand,
-        packSize: packSize,
         price: price,
         pigmentation: pigmentation,
         texture: texture,
@@ -87,6 +85,7 @@ function UpdateMakeUp() {
           updateMakeUp();
         }}
       >
+        <label htmlFor="thumbnail">Thumbnail:</label>
         <input
           type="text"
           name=""
@@ -94,6 +93,7 @@ function UpdateMakeUp() {
           value={thumbnail}
           onChange={(e) => setthumbnail(e.target.value)}
         />
+        <label htmlFor="image1">Image1:</label>
         <input
           type="text"
           name=""
@@ -101,6 +101,7 @@ function UpdateMakeUp() {
           value={image1}
           onChange={(e) => setimage1(e.target.value)}
         />
+        <label htmlFor="image2">Image2:</label>
         <input
           type="text"
           name=""
@@ -108,6 +109,7 @@ function UpdateMakeUp() {
           value={image2}
           onChange={(e) => setimage2(e.target.value)}
         />
+        <label htmlFor="image3">Image3:</label>
         <input
           type="text"
           name=""
@@ -115,6 +117,7 @@ function UpdateMakeUp() {
           value={image3}
           onChange={(e) => setimage3(e.target.value)}
         />
+        <label htmlFor="image4">Image4:</label>
         <input
           type="text"
           name=""
@@ -122,6 +125,7 @@ function UpdateMakeUp() {
           value={image4}
           onChange={(e) => setimage4(e.target.value)}
         />
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
           name=""
@@ -129,6 +133,7 @@ function UpdateMakeUp() {
           value={name}
           onChange={(e) => setname(e.target.value)}
         />
+        <label htmlFor="about">About:</label>
         <input
           type="text"
           name=""
@@ -136,6 +141,7 @@ function UpdateMakeUp() {
           value={about}
           onChange={(e) => setabout(e.target.value)}
         />
+        <label htmlFor="category">Category:</label>
         <input
           type="text"
           name=""
@@ -143,6 +149,7 @@ function UpdateMakeUp() {
           value={category}
           onChange={(e) => setcategory(e.target.value)}
         />
+        <label htmlFor="subCategory">SubCategory:</label>
         <input
           type="text"
           name=""
@@ -150,6 +157,7 @@ function UpdateMakeUp() {
           value={subCategory}
           onChange={(e) => setsubCategory(e.target.value)}
         />
+        <label htmlFor="brand">Brand:</label>
         <input
           type="text"
           name=""
@@ -157,13 +165,7 @@ function UpdateMakeUp() {
           value={brand}
           onChange={(e) => setbrand(e.target.value)}
         />
-        <input
-          type="text"
-          name=""
-          id="packSize"
-          value={packSize}
-          onChange={(e) => setpackSize(e.target.value)}
-        />
+        <label htmlFor="price">Price:</label>
         <input
           type="text"
           name=""
@@ -171,6 +173,7 @@ function UpdateMakeUp() {
           value={price}
           onChange={(e) => setprice(e.target.value)}
         />
+        <label htmlFor="pigmentation">Pigmentation:</label>
         <input
           type="text"
           name=""
@@ -178,6 +181,7 @@ function UpdateMakeUp() {
           value={pigmentation}
           onChange={(e) => setpigmentation(e.target.value)}
         />
+        <label htmlFor="texture">Texture:</label>
         <input
           type="text"
           name=""
@@ -185,6 +189,7 @@ function UpdateMakeUp() {
           value={texture}
           onChange={(e) => settexture(e.target.value)}
         />
+        <label htmlFor="application">Application:</label>
         <input
           type="text"
           name=""
@@ -192,6 +197,7 @@ function UpdateMakeUp() {
           value={application}
           onChange={(e) => setapplication(e.target.value)}
         />
+        <label htmlFor="longevity">Longevity:</label>
         <input
           type="text"
           name=""

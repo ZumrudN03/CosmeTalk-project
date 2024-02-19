@@ -11,7 +11,6 @@ const makeupSchema = new Schema({
   category: String,
   subCategory: String,
   brand: String,
-  packSize: String,
   price: Number,
   pigmentation: Number,
   texture: Number,

@@ -1,19 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import "./index.scss"
+import React, { useEffect, useState } from "react";
+import "./index.scss";
+import { Link } from "react-router-dom";
 
-function AdminSkinCare() {
-  const [adminSkinCare, setAdminSkinCare] = useState([]);
+function AdminMakeUp() {
+  const [adminMakeUp, setAdminMakeUp] = useState([]);
 
-  function getFetchSkinCareProducts() {
-    fetch("http://localhost:3100/skincare")
+  function getFetchMakeUpProducts() {
+    fetch("http://localhost:3100/makeup")
       .then((res) => res.json())
-      .then((data) => setAdminSkinCare(data));
+      .then((data) => setAdminMakeUp(data));
   }
   useEffect(() => {
-    getFetchSkinCareProducts();
+    getFetchMakeUpProducts();
   }, []);
+
+  async function deleteMakeUp(id) {
+    await fetch("http://localhost:3100/makeup/" + id, {
+      method: "DELETE",
+    });
+    await getFetchMakeUpProducts();
+  }
+
   return (
-    <div className='adminSkinCare'>
+    <div className="adminMakeUp">
+      <div className="adminMakeUp_btn">
+        <Link to={"/admin/addmakeup"}>
+          <button>
+            <i className="fa-solid fa-plus"></i> Add MakeUp Product
+          </button>
+        </Link>
+      </div>
       <table>
         <thead>
           <tr>
@@ -28,15 +44,15 @@ function AdminSkinCare() {
             <th>SubCategory</th>
             <th>Brand</th>
             <th>Price</th>
-            <th>PackSize</th>
+            <th>Pigmentation</th>
             <th>Texture</th>
             <th>Application</th>
-            <th>Effect</th>
+            <th>Longevity</th>
             <th>Edit/Delete</th>
           </tr>
         </thead>
         <tbody>
-          {adminSkinCare.map((x) => (
+          {adminMakeUp.map((x) => (
             <tr>
               <td>
                 <div className="table_img">
@@ -64,26 +80,28 @@ function AdminSkinCare() {
                 </div>
               </td>
               <td>{x.name}</td>
-              <td>{x.about.slice(0, 70)}...</td>
+              <td>{x.about?.slice(0, 70)}...</td>
               <td>{x.category}</td>
               <td>{x.subCategory}</td>
               <td>{x.brand}</td>
               <td>{x.price}</td>
-              <td>{x.packSize}</td>
               <td>{x.pigmentation}</td>
               <td>{x.texture}</td>
-              <td>{x.effect}</td>
+              <td>{x.application}</td>
               <td>{x.longevity}</td>
               <td className="table_icon">
-                <i className="fa-regular fa-pen-to-square"></i>
-                <i className="fa-regular fa-trash-can"></i>
+                <Link to={"/admin/updatemakeup/"+x._id}><i className="fa-regular fa-pen-to-square"></i></Link>
+                <i
+                  onClick={() => deleteMakeUp(x._id)}
+                  className="fa-regular fa-trash-can"
+                ></i>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default AdminSkinCare
+export default AdminMakeUp;

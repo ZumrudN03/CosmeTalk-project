@@ -1,11 +1,13 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./index.scss"
+import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
-function AddMakeUp() {
-  function postMakeUp(values) {
-    fetch("http://localhost:3100/makeup", {
+function AddSkinCare() {
+  const navigate = useNavigate();
+  function postSkinCare(values) {
+    fetch("http://localhost:3100/skincare", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -19,10 +21,10 @@ function AddMakeUp() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    navigate("/admin/skincare");
   }
-
   return (
-    <div className="addMakeUp">
+    <div className="addSkinCare">
       <Formik
         initialValues={{
           thumbnail: "",
@@ -37,10 +39,9 @@ function AddMakeUp() {
           brand: "",
           packSize: "",
           price: 0,
-          pigmentation: 0,
           texture: 0,
           application: 0,
-          longevity: 0,
+          effect: 0,
         }}
         validationSchema={Yup.object({
           thumbnail: Yup.string()
@@ -69,13 +70,12 @@ function AddMakeUp() {
             .max(50, "Must be 50 characters or less")
             .required("Required"),
           price: Yup.number().required("Required"),
-          pigmentation: Yup.number().required("Required"),
           texture: Yup.number().required("Required"),
           application: Yup.number().required("Required"),
-          longevity: Yup.number().required("Required"),
+          effect: Yup.number().required("Required"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          postMakeUp(values);
+          postSkinCare(values);
           resetForm();
           setSubmitting(false);
         }}
@@ -103,47 +103,43 @@ function AddMakeUp() {
 
           <label htmlFor="name">Name:</label>
           <Field name="name" type="text" />
-          <ErrorMessage component="div" className="error"  name="name" />
+          <ErrorMessage component="div" className="error" name="name" />
 
           <label htmlFor="about">About:</label>
           <Field name="about" type="text" />
-          <ErrorMessage component="div" className="error"  name="about" />
+          <ErrorMessage component="div" className="error" name="about" />
 
           <label htmlFor="category">Category:</label>
           <Field name="category" type="text" />
-          <ErrorMessage component="div" className="error"  name="category" />
+          <ErrorMessage component="div" className="error" name="category" />
 
           <label htmlFor="subCategory">SubCategory:</label>
           <Field name="subCategory" type="text" />
-          <ErrorMessage component="div" className="error"  name="subCategory" />
+          <ErrorMessage component="div" className="error" name="subCategory" />
 
           <label htmlFor="brand">Brand:</label>
           <Field name="brand" type="text" />
-          <ErrorMessage component="div" className="error"  name="brand" />
+          <ErrorMessage component="div" className="error" name="brand" />
 
           <label htmlFor="packSize">PackSize:</label>
           <Field name="packSize" type="text" />
-          <ErrorMessage component="div" className="error"  name="packSize" />
+          <ErrorMessage component="div" className="error" name="packSize" />
 
           <label htmlFor="price">Price:</label>
           <Field name="price" type="number" />
-          <ErrorMessage component="div" className="error"  name="price" />
-
-          <label htmlFor="pigmentation">Pigmentation:</label>
-          <Field name="pigmentation" type="number" />
-          <ErrorMessage component="div" className="error"  name="pigmentation" />
+          <ErrorMessage component="div" className="error" name="price" />
 
           <label htmlFor="texture">Texture:</label>
           <Field name="texture" type="number" />
-          <ErrorMessage component="div" className="error"  name="texture" />
+          <ErrorMessage component="div" className="error" name="texture" />
 
           <label htmlFor="application">Application:</label>
           <Field name="application" type="number" />
-          <ErrorMessage component="div" className="error"  name="application" />
+          <ErrorMessage component="div" className="error" name="application" />
 
-          <label htmlFor="longevity">Longevity:</label>
-          <Field name="longevity" type="number" />
-          <ErrorMessage component="div" className="error"  name="longevity" />
+          <label htmlFor="effect">Effect:</label>
+          <Field name="effect" type="number" />
+          <ErrorMessage component="div" className="error" name="effect" />
 
           <button type="submit">+Add</button>
         </Form>
@@ -152,4 +148,4 @@ function AddMakeUp() {
   );
 }
 
-export default AddMakeUp;
+export default AddSkinCare;

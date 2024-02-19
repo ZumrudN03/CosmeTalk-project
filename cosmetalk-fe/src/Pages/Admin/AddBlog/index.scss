@@ -1,0 +1,26 @@
+.addBlog {
+    margin: 30px auto;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: 900px;
+        padding: 5px;
+      }
+      button {
+        border: none;
+        padding: 5px 10px;
+        background-color: #262626;
+        color: white;
+        transition: 300ms;
+        margin-top: 20px;
+        &:hover {
+          background-color: black;
+        }
+      }
+    }
+  }
+  .error {
+    color: red;
+  }
+  
