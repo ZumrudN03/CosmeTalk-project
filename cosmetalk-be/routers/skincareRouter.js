@@ -3,7 +3,7 @@ import {
   DeleteSkinCareProductByID,
   GetAllSkinCareProducts,
   GetSkinCareProductByID,
-  PostOneSkinCareProduct,
+  CreateOneSkinCareProduct,
   UpdateSkinCareProductByID,
 } from "../controller/skincareController.js";
 
@@ -11,6 +11,6 @@ export const skincareRoute = Router();
 
 skincareRoute.get("/", GetAllSkinCareProducts);
 skincareRoute.get("/:id", GetSkinCareProductByID);
-skincareRoute.post("/", PostOneSkinCareProduct);
+skincareRoute.post("/", CreateOneSkinCareProduct);
 skincareRoute.put("/:id", UpdateSkinCareProductByID);
 skincareRoute.delete("/:id", DeleteSkinCareProductByID);

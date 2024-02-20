@@ -20,6 +20,7 @@ import AddSkinCare from "./Pages/Admin/AddSkinCare";
 import AddBlog from "./Pages/Admin/AddBlog";
 import UpdateSkinCare from "./Pages/Admin/UpdateSkinCare";
 import UpdateBlog from "./Pages/Admin/UpdateBlog";
+import Register from "./Pages/Register";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/blogdetail/:id" element={<BlogDetail />} />
+            <Route path="/register" element={<Register/>}/>
           </Route>
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminPanel />} />

@@ -19,7 +19,7 @@ export const GetSkinCareProductByID = async (req, res) => {
   }
 };
 
-export const PostOneSkinCareProduct = async (req, res) => {
+export const CreateOneSkinCareProduct = async (req, res) => {
   try {
     const {
       thumbnail,
@@ -56,7 +56,7 @@ export const PostOneSkinCareProduct = async (req, res) => {
       effect,
     });
     await newSkinCare.save();
-    res.send("New SkinCare Product Added!");
+    res.send("New SkinCare Product Created!");
   } catch (error) {
     res.send(error.message);
   }

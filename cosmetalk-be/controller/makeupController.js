@@ -19,7 +19,7 @@ export const GetMakeUpProductByID = async (req, res) => {
   }
 };
 
-export const PostOneMakeUpProduct = async (req, res) => {
+export const CreateOneMakeUpProduct = async (req, res) => {
   try {
     const {
       thumbnail,
@@ -56,7 +56,7 @@ export const PostOneMakeUpProduct = async (req, res) => {
       longevity,
     });
     await newMakeup.save();
-    res.send("New MakeUp Product Added!");
+    res.send("New MakeUp Product Created!");
   } catch (error) {
     res.send(error.message);
   }

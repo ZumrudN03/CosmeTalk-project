@@ -19,7 +19,7 @@ export const GetBlogByID = async (req, res) => {
   }
 };
 
-export const PostOneBlog = async (req, res) => {
+export const CreateOneBlog = async (req, res) => {
   try {
     const {
       thumbnail,
@@ -62,7 +62,7 @@ export const PostOneBlog = async (req, res) => {
       name5,
     });
     await newBlog.save();
-    res.send("New Blog Added!");
+    res.send("New Blog Created!");
   } catch (error) {
     res.send(error.message);
   }

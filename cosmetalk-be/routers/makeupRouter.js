@@ -3,7 +3,7 @@ import {
   DeleteMakeUpProductByID,
   GetAllMakeUpProducts,
   GetMakeUpProductByID,
-  PostOneMakeUpProduct,
+  CreateOneMakeUpProduct,
   UpdateMakeUpProductByID,
 } from "../controller/makeupController.js";
 
@@ -11,6 +11,6 @@ export const makeupRoute = Router();
 
 makeupRoute.get("/", GetAllMakeUpProducts);
 makeupRoute.get("/:id", GetMakeUpProductByID);
-makeupRoute.post("/", PostOneMakeUpProduct);
+makeupRoute.post("/", CreateOneMakeUpProduct);
 makeupRoute.put("/:id", UpdateMakeUpProductByID);
 makeupRoute.delete("/:id", DeleteMakeUpProductByID);
