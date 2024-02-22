@@ -1,8 +1,9 @@
 import React, { createRef, useState } from "react";
 import { useContext } from "react";
 import { UserTokenContext } from "../../Context/UserTokenContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import "./index.scss";
 
 function Register() {
   const { addToken } = useContext(UserTokenContext);
@@ -54,39 +55,57 @@ function Register() {
         <title>Register</title>
       </Helmet>
       <div className="register">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="username"
-            placeholder="UserName"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="text"
-            id="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            id="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <i
-            className={
-                passwordType ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"
-            }
-            onClick={() => passwordToggle()}
-          ></i>
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileRef}
-            onChange={(e) => setProfilePhoto(e.target.files[0])}
-          />
-          <button>submit</button>
-        </form>
+        <div className="create_account">
+          <p className="register_logo">CosmeTalk</p>
+          <p className="register_signAccount">Create An Account</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="username"
+              placeholder="UserName"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="text"
+              id="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <div className="register_password">
+              <input
+                type="text"
+                id="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <i
+                className={
+                  passwordType ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"
+                }
+                onClick={() => passwordType()}
+              ></i>
+            </div>
+            <div className="register_profilePhoto">
+            <p className="add_file">Add Profile Photo</p>
+            <input
+              className="add_profilePhoto"
+              type="file"
+              accept="image/*"
+              ref={fileRef}
+              onChange={(e) => setProfilePhoto(e.target.files[0])}
+            />
+            </div>
+            <button>Register</button>
+          </form>
+          <p className="register_login">
+            Do have an account? <Link to={"/login"}>Login</Link>
+          </p>
+          <div className="create_account_border_top"></div>
+          <div className="create_account_border_bottom"></div>
+          <div className="create_account_border_left"></div>
+        </div>
+        <div className="register_left"></div>
+        <div className="register_right"></div>
       </div>
     </>
   );

@@ -17,7 +17,7 @@ function LatestPostSection() {
   return (
     <div className="latestPostSection">
       {blogCard.map((x) => (
-        <div className="latestPostSectionCard">
+        <div  key={x._id} className="latestPostSectionCard">
           <img className="latestPostSectionCard_img" src={x.thumbnail} alt="" />
           <p className="latestPostSectionCard_title">{x.title}</p>
           <button className="latestPostSectionCard_btn">

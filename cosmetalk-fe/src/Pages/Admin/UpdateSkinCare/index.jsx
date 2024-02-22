@@ -6,14 +6,9 @@ function UpdateSkinCare() {
     const { id } = useParams();
     const navigate = useNavigate()
     const [thumbnail, setthumbnail] = useState("");
-    const [image1, setimage1] = useState("");
-    const [image2, setimage2] = useState("");
-    const [image3, setimage3] = useState("");
-    const [image4, setimage4] = useState("");
     const [name, setname] = useState("");
     const [about, setabout] = useState("");
     const [category, setcategory] = useState("");
-    const [subCategory, setsubCategory] = useState("");
     const [brand, setbrand] = useState("");
     const [packSize, setpackSize] = useState("");
     const [price, setprice] = useState("");
@@ -25,14 +20,9 @@ function UpdateSkinCare() {
         const responese = await fetch("http://localhost:3100/skincare/" + id);
         const data = await responese.json();
         setthumbnail(data.thumbnail);
-        setimage1(data.image1);
-        setimage2(data.image2);
-        setimage3(data.image3);
-        setimage4(data.image4);
         setname(data.name);
         setabout(data.about);
         setcategory(data.category);
-        setsubCategory(data.subCategory);
         setbrand(data.brand);
         setpackSize(data.packSize);
         setprice(data.price);
@@ -49,14 +39,9 @@ function UpdateSkinCare() {
           method: "PUT",
           body: JSON.stringify({
             thumbnail: thumbnail,
-            image1: image1,
-            image2: image2,
-            image3: image3,
-            image4: image4,
             name: name,
             about: about,
             category: category,
-            subCategory: subCategory,
             brand: brand,
             packSize: packSize,
             price: price,
@@ -94,38 +79,6 @@ function UpdateSkinCare() {
           value={thumbnail}
           onChange={(e) => setthumbnail(e.target.value)}
         />
-        <label htmlFor="image1">Image1:</label>
-        <input
-          type="text"
-          name=""
-          id="image1"
-          value={image1}
-          onChange={(e) => setimage1(e.target.value)}
-        />
-        <label htmlFor="image2">Image2:</label>
-        <input
-          type="text"
-          name=""
-          id="image2"
-          value={image2}
-          onChange={(e) => setimage2(e.target.value)}
-        />
-        <label htmlFor="image3">Image3:</label>
-        <input
-          type="text"
-          name=""
-          id="image3"
-          value={image3}
-          onChange={(e) => setimage3(e.target.value)}
-        />
-        <label htmlFor="image4">Image4:</label>
-        <input
-          type="text"
-          name=""
-          id="image4"
-          value={image4}
-          onChange={(e) => setimage4(e.target.value)}
-        />
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -149,14 +102,6 @@ function UpdateSkinCare() {
           id="category"
           value={category}
           onChange={(e) => setcategory(e.target.value)}
-        />
-        <label htmlFor="subCategory">SubCategory:</label>
-        <input
-          type="text"
-          name=""
-          id="subCategory"
-          value={subCategory}
-          onChange={(e) => setsubCategory(e.target.value)}
         />
         <label htmlFor="brand">Brand:</label>
         <input

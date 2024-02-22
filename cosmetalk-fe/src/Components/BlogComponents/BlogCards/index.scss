@@ -3,8 +3,10 @@
     max-width: 80%;
     margin: 30px auto;
     justify-content: space-between;
+    flex-wrap: wrap;
   .blogCard {
     width: 360px;
+    margin: 15px 0px;
     &_img {
       width: 360px;
       height: 460px;

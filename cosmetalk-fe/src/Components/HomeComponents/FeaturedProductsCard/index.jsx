@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
+import { Link } from "react-router-dom";
 
 function FeaturedProductsCard() {
   const [featuredProductsCard, setFeaturedProductsCard] = useState([]);
@@ -17,13 +18,15 @@ function FeaturedProductsCard() {
     <>
       <div className="featuredProductsCards">
         {featuredProductsCard.slice(0, 4).map((x) => (
-          <div className="featuredProductsCard">
+          <div key={x._id} className="featuredProductsCard">
             <div className="featuredProductsCard_img">
               <img src={x.thumbnail} alt="" />
               <div className="featuredProductsCard_hover">
-                <button className="featuredProductsCard_hover_btn">
-                  OPEN REVIEW
-                </button>
+                <Link to={"/makeupcarddetail/" + x._id}>
+                  <button className="featuredProductsCard_hover_btn">
+                    OPEN REVIEW
+                  </button>
+                </Link>
               </div>
             </div>
 

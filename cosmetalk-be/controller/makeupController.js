@@ -23,10 +23,6 @@ export const CreateOneMakeUpProduct = async (req, res) => {
   try {
     const {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
@@ -40,10 +36,6 @@ export const CreateOneMakeUpProduct = async (req, res) => {
     } = req.body;
     const newMakeup = new MakeupModel({
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
@@ -66,10 +58,6 @@ export const UpdateMakeUpProductByID = async (req, res) => {
   try {
     const {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
@@ -84,10 +72,6 @@ export const UpdateMakeUpProductByID = async (req, res) => {
     const { id } = req.params;
     const makeup = await MakeupModel.findByIdAndUpdate(id, {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,

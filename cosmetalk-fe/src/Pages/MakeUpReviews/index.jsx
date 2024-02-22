@@ -1,7 +1,8 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
-import "./index.scss"
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import "./index.scss";
+import MakeUpReviewsCards from "../../Components/MakeUpReviewsComponents/MakeUpReviewsCards";
 
 function MakeUpReviews() {
   return (
@@ -18,8 +19,10 @@ function MakeUpReviews() {
           <p className="makeup_location_makeup">MakeUp</p>
         </div>
       </div>
+
+      <MakeUpReviewsCards />
     </>
-  )
+  );
 }
 
-export default MakeUpReviews
+export default MakeUpReviews;

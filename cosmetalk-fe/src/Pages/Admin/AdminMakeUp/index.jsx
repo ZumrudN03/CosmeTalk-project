@@ -34,10 +34,6 @@ function AdminMakeUp() {
         <thead>
           <tr>
             <th>Thumbnail</th>
-            <th>Image1</th>
-            <th>Image2</th>
-            <th>Image3</th>
-            <th>Image4</th>
             <th>Name</th>
             <th>About</th>
             <th>Category</th>
@@ -53,30 +49,10 @@ function AdminMakeUp() {
         </thead>
         <tbody>
           {adminMakeUp.map((x) => (
-            <tr>
+            <tr key={x._id}>
               <td>
                 <div className="table_img">
                   <img src={x.thumbnail} alt="" />
-                </div>
-              </td>
-              <td>
-                <div className="table_img">
-                  <img src={x.image1} alt="" />
-                </div>
-              </td>
-              <td>
-                <div className="table_img">
-                  <img src={x.image2} alt="" />
-                </div>
-              </td>
-              <td>
-                <div className="table_img">
-                  <img src={x.image3} alt="" />
-                </div>
-              </td>
-              <td>
-                <div className="table_img">
-                  <img src={x.image4} alt="" />
                 </div>
               </td>
               <td>{x.name}</td>

@@ -31,7 +31,7 @@ function HeaderSlider() {
         className="mySwiper"
       >
         {blogCard.map((x) => (
-          <SwiperSlide className="SwiperSlide">
+          <SwiperSlide key={x._id} className="SwiperSlide">
             <img src={x.thumbnail} alt="" />
             <div className="SwiperSlide_title"><p>{x.title}</p></div>
           </SwiperSlide>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import "./index.scss"
+import SkinCareReviewsCards from '../../Components/SkinCareReviewsComponents/SkinCareReviewsCards'
 
 function SkinCareReviews() {
   return (
@@ -18,6 +19,7 @@ function SkinCareReviews() {
           <p className="skincare_location_skincare">SkinCare</p>
         </div>
       </div>
+      <SkinCareReviewsCards/>
     </>
   )
 }

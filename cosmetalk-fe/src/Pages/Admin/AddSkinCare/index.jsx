@@ -28,14 +28,9 @@ function AddSkinCare() {
       <Formik
         initialValues={{
           thumbnail: "",
-          image1: "",
-          image2: "",
-          image3: "",
-          image4: "",
           name: "",
           about: "",
           category: "",
-          subCategory: "",
           brand: "",
           packSize: "",
           price: 0,
@@ -47,10 +42,6 @@ function AddSkinCare() {
           thumbnail: Yup.string()
             .max(200, "Must be 200 characters or less")
             .required("Required"),
-          image1: Yup.string().max(200, "Must be 200 characters or less"),
-          image2: Yup.string().max(200, "Must be 200 characters or less"),
-          image3: Yup.string().max(200, "Must be 200 characters or less"),
-          image4: Yup.string().max(200, "Must be 200 characters or less"),
           name: Yup.string()
             .max(50, "Must be 50 characters or less")
             .required("Required"),
@@ -58,9 +49,6 @@ function AddSkinCare() {
             .max(500, "Must be 500 characters or less")
             .required("Required"),
           category: Yup.string()
-            .max(50, "Must be 50 characters or less")
-            .required("Required"),
-          subCategory: Yup.string()
             .max(50, "Must be 50 characters or less")
             .required("Required"),
           brand: Yup.string()
@@ -85,22 +73,6 @@ function AddSkinCare() {
           <Field name="thumbnail" type="text" />
           <ErrorMessage component="div" className="error" name="thumbnail" />
 
-          <label htmlFor="image1">Image1:</label>
-          <Field name="image1" type="text" />
-          <ErrorMessage name="image1" />
-
-          <label htmlFor="image2">Image2:</label>
-          <Field name="image2" type="text" />
-          <ErrorMessage name="image2" />
-
-          <label htmlFor="image3">Image3:</label>
-          <Field name="image3" type="text" />
-          <ErrorMessage name="image3" />
-
-          <label htmlFor="image4">Image4:</label>
-          <Field name="image4" type="text" />
-          <ErrorMessage name="image4" />
-
           <label htmlFor="name">Name:</label>
           <Field name="name" type="text" />
           <ErrorMessage component="div" className="error" name="name" />
@@ -112,10 +84,6 @@ function AddSkinCare() {
           <label htmlFor="category">Category:</label>
           <Field name="category" type="text" />
           <ErrorMessage component="div" className="error" name="category" />
-
-          <label htmlFor="subCategory">SubCategory:</label>
-          <Field name="subCategory" type="text" />
-          <ErrorMessage component="div" className="error" name="subCategory" />
 
           <label htmlFor="brand">Brand:</label>
           <Field name="brand" type="text" />

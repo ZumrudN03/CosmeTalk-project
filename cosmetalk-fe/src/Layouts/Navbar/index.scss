@@ -56,6 +56,51 @@
         border-left: 2px solid lightgray;
         border-right: 2px solid lightgray;
       }
+      .login_register{
+        position: relative;
+        &_hover{
+          position: absolute;
+          background-color: white;
+          width: 200px;
+          height: 200px;
+          border: 1px solid lightgray;
+          z-index: 3;
+          right: -90px;
+          top: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 10px;
+          padding: 10px;
+          img{
+            width: 70px;
+          }
+          .register_btn{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 5px;
+            p{
+            font-size: 14px;
+            color: #191919;
+            font-weight: 600;
+            padding: 10px 0px 5px 0px;
+            }
+          }
+          a{
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-weight: 600;
+            background-color: gray;
+            color: white;
+            transition: 300ms;
+            font-size: 14px;
+            &:hover{
+              background-color: #f6c4a7;
+            }
+          }
+        }
+      }
     }
   }
 }

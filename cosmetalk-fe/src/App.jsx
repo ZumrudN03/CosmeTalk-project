@@ -21,6 +21,9 @@ import AddBlog from "./Pages/Admin/AddBlog";
 import UpdateSkinCare from "./Pages/Admin/UpdateSkinCare";
 import UpdateBlog from "./Pages/Admin/UpdateBlog";
 import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import MakeUpReviewsCardDetail from "./Pages/MakeUpReviewsCardDetail";
+import SkinCareReviewsCardDetail from "./Pages/SkinCareReviewsCardDetail";
 
 function App() {
   return (
@@ -36,8 +39,12 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/blogdetail/:id" element={<BlogDetail />} />
-            <Route path="/register" element={<Register/>}/>
+            <Route path="/makeupcarddetail/:id" element={<MakeUpReviewsCardDetail />} />
+            <Route path="/skincarecarddetail/:id" element={<SkinCareReviewsCardDetail />} />
+
           </Route>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login/>}/>
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminPanel />} />
             <Route path="/admin/makeup" element={<AdminMakeUp/>}/>

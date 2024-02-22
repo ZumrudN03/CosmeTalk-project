@@ -1,5 +1,4 @@
 import express from 'express'
-
 import multer from 'multer'
 import { storage } from '../Middleware/multerStorage.js'
 import { register } from '../controller/authController.js'

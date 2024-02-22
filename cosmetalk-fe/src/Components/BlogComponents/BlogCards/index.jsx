@@ -16,7 +16,7 @@ function BlogCards() {
   return (
     <div className="blogCards">
       {blogCard.map((x) => (    
-        <div className="blogCard">
+        <div key={x._id} className="blogCard">
           <img className="blogCard_img" src={x.thumbnail} alt="" />
           <p className="blogCard_title">{x.title}</p>
           <button className="blogCard_btn">

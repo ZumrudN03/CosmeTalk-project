@@ -23,14 +23,9 @@ export const CreateOneSkinCareProduct = async (req, res) => {
   try {
     const {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
-      subCategory,
       brand,
       packSize,
       price,
@@ -40,14 +35,9 @@ export const CreateOneSkinCareProduct = async (req, res) => {
     } = req.body;
     const newSkinCare = new SkincareModel({
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
-      subCategory,
       brand,
       packSize,
       price,
@@ -66,14 +56,9 @@ export const UpdateSkinCareProductByID = async (req, res) => {
   try {
     const {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
-      subCategory,
       brand,
       packSize,
       price,
@@ -84,14 +69,9 @@ export const UpdateSkinCareProductByID = async (req, res) => {
     const { id } = req.params;
     const skincare = await SkincareModel.findByIdAndUpdate(id, {
       thumbnail,
-      image1,
-      image2,
-      image3,
-      image4,
       name,
       about,
       category,
-      subCategory,
       brand,
       packSize,
       price,

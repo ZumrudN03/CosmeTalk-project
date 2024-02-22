@@ -55,7 +55,7 @@ function AdminBlog() {
         </thead>
         <tbody>
           {adminBlog.map((x) => (
-            <tr>
+            <tr key={x._id}>
               <td>
                 <div className="table_img">
                   <img src={x.thumbnail} alt="" />

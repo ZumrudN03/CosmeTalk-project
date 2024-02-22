@@ -29,10 +29,6 @@ function AddMakeUp() {
       <Formik
         initialValues={{
           thumbnail: "",
-          image1: "",
-          image2: "",
-          image3: "",
-          image4: "",
           name: "",
           about: "",
           category: "",
@@ -48,12 +44,8 @@ function AddMakeUp() {
           thumbnail: Yup.string()
             .max(200, "Must be 200 characters or less")
             .required("Required"),
-          image1: Yup.string().max(200, "Must be 200 characters or less"),
-          image2: Yup.string().max(200, "Must be 200 characters or less"),
-          image3: Yup.string().max(200, "Must be 200 characters or less"),
-          image4: Yup.string().max(200, "Must be 200 characters or less"),
           name: Yup.string()
-            .max(50, "Must be 50 characters or less")
+            .max(100, "Must be 100 characters or less")
             .required("Required"),
           about: Yup.string()
             .max(500, "Must be 500 characters or less")
@@ -83,22 +75,6 @@ function AddMakeUp() {
           <label htmlFor="thumbnail">Thumbnail:</label>
           <Field name="thumbnail" type="text" />
           <ErrorMessage component="div" className="error" name="thumbnail" />
-
-          <label htmlFor="image1">Image1:</label>
-          <Field name="image1" type="text" />
-          <ErrorMessage name="image1" />
-
-          <label htmlFor="image2">Image2:</label>
-          <Field name="image2" type="text" />
-          <ErrorMessage name="image2" />
-
-          <label htmlFor="image3">Image3:</label>
-          <Field name="image3" type="text" />
-          <ErrorMessage name="image3" />
-
-          <label htmlFor="image4">Image4:</label>
-          <Field name="image4" type="text" />
-          <ErrorMessage name="image4" />
 
           <label htmlFor="name">Name:</label>
           <Field name="name" type="text" />

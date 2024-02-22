@@ -100,9 +100,7 @@ function Navbar() {
           </ul>
         </div>
         <div className="navbar_search">
-          <Link to={"/register"}>
-            <i className="fa-regular fa-user"></i>
-          </Link>
+          <Link to={"/login"}><i className="fa-regular fa-user"></i></Link>
           <Link to={"/wishlist"}>
             <i className="fa-regular fa-heart"></i>
           </Link>
