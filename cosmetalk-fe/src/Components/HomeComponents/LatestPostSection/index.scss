@@ -36,3 +36,36 @@
     }
   }
 }
+
+@media (max-width: 767.98px) {
+  .latestPostSection {
+    display: flex;
+    max-width: 90%;
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    .latestPostSectionCard {
+      margin: 20px 30px;
+      &_title {
+        font-size: 15px;
+      }
+      .latestPostSectionCard_btn {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 1199.98px) {
+  .latestPostSection {
+    display: flex;
+    max-width: 90%;
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    .latestPostSectionCard {
+      width: 260px;
+      margin: 20px 39px;
+    }
+  }
+}

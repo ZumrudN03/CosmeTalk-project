@@ -1,3 +1,4 @@
+import { MakeUpReviewModel } from "../model/makeupReviewModel.js";
 import { SkincareModel } from "../model/skincareModel.js";
 
 export const GetAllSkinCareProducts = async (req, res) => {
@@ -92,5 +93,24 @@ export const DeleteSkinCareProductByID = async (req, res) => {
     res.send("SkinCare Product Deleted!");
   } catch (error) {
     res.send(error.message);
+  }
+};
+
+export const GetSkincareProductWithComments = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const skincare = await MakeUpReviewModel.find({ skincareId: id }).populate(
+      "userId",
+      "-password"
+    );
+    console.log(skincare);
+    console.log(id);
+    if (!skincare) {
+      return res.status(404).send("Skincare Product not found");
+    }
+
+    res.send(skincare);
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 };

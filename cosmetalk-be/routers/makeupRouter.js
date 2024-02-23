@@ -5,6 +5,7 @@ import {
   GetMakeUpProductByID,
   CreateOneMakeUpProduct,
   UpdateMakeUpProductByID,
+  GetMakeUpProductWithComments,
 } from "../controller/makeupController.js";
 
 export const makeupRoute = Router();
@@ -14,3 +15,4 @@ makeupRoute.get("/:id", GetMakeUpProductByID);
 makeupRoute.post("/", CreateOneMakeUpProduct);
 makeupRoute.put("/:id", UpdateMakeUpProductByID);
 makeupRoute.delete("/:id", DeleteMakeUpProductByID);
+makeupRoute.get("/makeupWithReview/:id",GetMakeUpProductWithComments)

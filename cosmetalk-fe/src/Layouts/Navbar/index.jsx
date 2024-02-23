@@ -8,8 +8,7 @@ function Navbar() {
   const { decodedToken } = useContext(UserTokenContext);
   const [showProfile, setShowProfile] = useState(false);
   const [isSticky, setSticky] = useState(false);
-  const [showInput, setShowInput] = useState(false)
-  const [hiddenNav, setHiddenNav] = useState(false)
+  const [hiddenNav, setHiddenNav] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +27,7 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  function showNavmenu() {
-    setHiddenNav(!hiddenNav)
-  }
+
   return (
     <div className={`navbar_container ${isSticky ? "sticky" : ""}`}>
       <div className="navbar_logo">
@@ -54,14 +51,7 @@ function Navbar() {
         <div className="navbar_navmenu">
           <ul>
             <li>
-              <NavLink
-                to="/"
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "#F6C4A7" : "",
-                  };
-                }}
-              >
+              <NavLink to="/" onClick={() => setHiddenNav(!hiddenNav)}>
                 HOME
               </NavLink>
             </li>
@@ -128,9 +118,52 @@ function Navbar() {
           </ul>
         </div>
         <div className="navbar_search">
-        <i className="fa-solid fa-bars" onClick={showNavmenu}></i>
-          {/* <input type="text" />
-        <i className="fa-solid fa-magnifying-glass"></i> */}
+          <div
+            className={hiddenNav ? "responsiveNav hiddenNav" : "responsiveNav"}
+          >
+            <ul>
+              <li>
+                <NavLink to="/" onClick={() => setHiddenNav(!hiddenNav)}>
+                  HOME
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/makeupreviews"
+                  onClick={() => setHiddenNav(!hiddenNav)}
+                >
+                  MAKEUP
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/skincarereviews"
+                  onClick={() => setHiddenNav(!hiddenNav)}
+                >
+                  SKINCARE
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/brands" onClick={() => setHiddenNav(!hiddenNav)}>
+                  BRANDS
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" onClick={() => setHiddenNav(!hiddenNav)}>
+                  ABOUT
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/blog" onClick={() => setHiddenNav(!hiddenNav)}>
+                  BLOG
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          <i
+            className="fa-solid fa-bars"
+            onClick={() => setHiddenNav(!hiddenNav)}
+          ></i>
           {decodedToken ? (
             <div className="showProfile">
               <p onClick={() => setShowProfile(!showProfile)}>

@@ -12,6 +12,7 @@ const makeupSchema = new Schema({
   texture: Number,
   application: Number,
   longevity: Number,
+  comments: [{ type: Schema.Types.ObjectId, ref: "MakeUpReview" }]
 });
 
 export const MakeupModel = mongoose.model("Makeup", makeupSchema);

@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 function MakeUpReviewsCards() {
   const [makeUpCard, setMakeUpCard] = useState([]);
   const [filterData, setFilterData] = useState("All");
+  
   function getFetchMakeUpProducts() {
     fetch("http://localhost:3100/makeup")
       .then((res) => res.json())

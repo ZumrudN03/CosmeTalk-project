@@ -27,10 +27,6 @@ function About() {
         <CommentsAndReviewSection />
         <CommunicationSection />
       </div>
-      {/* <div className="about_footer">
-        <p>FEATURED REVIEWS</p>
-        <FeaturedProductsCard/>
-      </div> */}
     </>
   );
 }

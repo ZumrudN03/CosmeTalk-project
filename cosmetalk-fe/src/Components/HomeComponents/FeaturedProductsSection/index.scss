@@ -8,6 +8,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .featuredProductsSection_title{
         font-size: 28px;
         color: white;
@@ -25,3 +26,41 @@
     }
   }
 }
+
+@media (max-width: 575.98px) { 
+  .featuredProductsSection {
+    &_header {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .featuredProductsSection_title{
+          font-size: 18px;
+      }
+      .featuredProductsSection_btn{
+          font-size: 12px;
+      }
+    }
+  }
+ }
+
+@media (min-width: 575.98px) and (max-width: 767.98px) { 
+  .featuredProductsSection {
+    &_header {
+      .featuredProductsSection_title{
+          font-size: 22px;
+          color: white;
+          font-weight: 800;
+      }
+      .featuredProductsSection_btn{
+          background-color: transparent;
+          border: none;
+          font-size: 12px;
+          transition: 300ms;
+          color: white;
+          &:hover {
+            color: #f6c4a7;
+          }
+      }
+    }
+  }
+ }

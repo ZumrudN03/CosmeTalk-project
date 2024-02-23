@@ -59,6 +59,18 @@
         font-size: 14px;
         color: gray;
         font-weight: 600;
+        .stars {
+          max-width: 100%;
+          display: flex;
+          gap: 3px;
+          .str {
+            font-size: 14px;
+            color: #ffc107;
+          }
+          input[type="radio"] {
+            display: none;
+          }
+        }
         .reviewDetail_categories {
           font-size: 12px;
           display: flex;
@@ -98,43 +110,190 @@
       object-fit: contain;
       padding-bottom: 20px;
     }
-    .makeupDetail_name{
-        font-size: 34px;
+    .makeupDetail_name {
+      font-size: 34px;
+      text-align: center;
+      padding: 15px 0px;
+      font-weight: 600;
+    }
+    .makeupDetail_about {
+      line-height: 1.8;
+      color: rgb(84, 84, 84);
+      padding: 40px 0px;
+    }
+    .makeupDetail_ratings {
+      width: 100%;
+      border: 1px solid lightgray;
+      display: flex;
+      padding: 40px;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      .makeupDetail_rating {
         text-align: center;
-        padding: 15px 0px;
-        font-weight: 600;
-    }
-    .makeupDetail_icon{
-        display: flex;
-        justify-content: center;
-        padding: 10px 0px 20px 0px;
-        i{
-            color: #353535;
+        padding: 10px 5px;
+        p {
+          font-size: 18px;
+          font-weight: 600;
+          span {
+            font-size: 30px;
+          }
         }
+      }
     }
-    .makeupDetail_about{
-        line-height: 1.8;
-        color: rgb(84, 84, 84);
-        padding: 40px 0px;
+  }
+}
+.commentArea {
+  width: 80%;
+  padding: 50px 0px;
+  margin: 0 auto;
+  &_header {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0px 25px 0px;
+    p {
+      font-size: 26px;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
-    .makeupDetail_ratings{
-        width: 100%;
+  }
+  .makeupDetail_icon {
+    max-width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    .str {
+      font-size: 20px;
+      cursor: pointer;
+      transition: 300ms;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .commentArea_textarea {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      textarea {
+        max-width: 100%;
+        min-height: 80px;
+        resize: vertical;
+        outline: none;
+        padding: 10px;
         border: 1px solid lightgray;
+      }
+      label {
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+    }
+    .commentArea_input {
+      display: flex;
+      justify-content: space-between;
+      &_user {
         display: flex;
-        padding: 40px;
-        justify-content: space-between;
-        margin-bottom: 50px;
-        .makeupDetail_rating{
-            text-align: center;
-            p{
-                font-size: 18px;
-                font-weight: 600;
-                span{
-                    font-size: 30px;
-                }
-            }
+        flex-direction: column;
+        gap: 8px;
+        input {
+          width: 450px;
+          outline: none;
+          padding: 10px;
+          border: 1px solid lightgray;
         }
+        label {
+          font-size: 14px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    .commentArea_btn {
+      display: flex;
+      justify-content: center;
+      button {
+        width: 180px;
+        height: 40px;
+        border: none;
+        font-size: 11px;
+        font-weight: 800;
+        color: white;
+        background-color: #f36eae;
+      }
+    }
+  }
+}
+.sharedComments {
+  max-width: 80%;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .userComment {
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .userSide {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 17px;
+      letter-spacing: 1px;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid lightgray;
+      }
+      .userName {
+        font-size: 14px;
+        color: #f36eae;
+      }
+    }
+    .comment {
+      color: #191919;
+      font-size: 15px;
+    }
+  }
+}
 
+@media (max-width: 576px) {
+  .makeupDetail {
+    &_desc {
+      .makeupDetail_thumbnail {
+        width: 100%;
+      }
+      .makeupDetail_name {
+        font-size: 26px;
+      }
+    }
+  }
+  .makeupDetail_header {
+    .makeupDetail_location {
+      padding: 0px 5px;
+      &_makeup {
+        font-size: 14px;
+        text-align: center;
+      }
+      &_home {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media  (max-width: 991.98px) {
+  .makeupDetail {
+    display: flex;
+    flex-direction: column;
+    &_review {
+      width: 100%;
     }
   }
 }

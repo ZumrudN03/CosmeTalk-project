@@ -1,12 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import CommentArea from "../../Components/CommentArea";
+import { UserTokenContext } from "../../Context/UserTokenContext";
+import { FaStar } from "react-icons/fa";
 
 function SkinCareReviewsCardDetail() {
   const { id } = useParams();
   const [skincareDetail, setSkincareDetail] = useState([]);
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [message, setMessage] = useState("");
+  const { decodedToken } = useContext(UserTokenContext);
+  const [skincareComments, setskincareComments] = useState([]);
+
+  async function postComment() {
+    try {
+      const response = await fetch("http://localhost:3100/makeupreview/", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: decodedToken.userId,
+          skincareId: id,
+          content: message,
+          rating: rating,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      await fetchComments();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  async function fetchComments(e) {
+    try {
+      const response = await fetch(
+        "http://localhost:3100/skincare/skincareWithReview/" + id
+      );
+      const data = await response.json();
+      setskincareComments(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
 
   function getFetchSkinCareDetail() {
     fetch("http://localhost:3100/skincare/" + id)
@@ -39,13 +80,6 @@ function SkinCareReviewsCardDetail() {
             alt=""
           />
           <p className="skincareDetail_name">{skincareDetail.name}</p>
-          <div className="skincareDetail_icon">
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-          </div>
           <p className="skincareDetail_about">{skincareDetail.about}</p>
           <div className="skincareDetail_ratings">
             <div className="skincareDetail_rating">
@@ -67,7 +101,6 @@ function SkinCareReviewsCardDetail() {
               <p>Effect</p>
             </div>
           </div>
-          <CommentArea />
         </div>
         <div className="skincareDetail_review">
           <div className="skincareDetail_review_reviewDetail">
@@ -78,7 +111,25 @@ function SkinCareReviewsCardDetail() {
             </div>
             <ul>
               <li>
-                Likes: <i className="fa-regular fa-heart"></i>
+                Likes:{" "}
+                <div className="stars">
+                  {[...Array(5)].map((star, i) => {
+                    const ratingValue = i + 1;
+                    return (
+                      <label key={i}>
+                        <input type="radio" name="rating" id="" />
+                        <FaStar
+                          className="str"
+                          color={
+                            ratingValue <= (hover || rating)
+                              ? "ffc107"
+                              : "e4e5e9"
+                          }
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
               </li>
               <li>
                 Comments: <i className="fa-regular fa-comment"></i>
@@ -107,9 +158,67 @@ function SkinCareReviewsCardDetail() {
               <li className="reviewInfo_brand">
                 Brand:<p>{skincareDetail.brand}</p>
               </li>
+              <li>
+                Pack Size: <p>{skincareDetail.packSize}</p>
+              </li>
             </ul>
           </div>
         </div>
+      </div>
+      <div className="commentArea">
+        <div className="commentArea_header">
+          <p>Leave a Reply</p>
+        </div>
+        <div className="makeupDetail_icon">
+          {[...Array(5)].map((star, i) => {
+            const ratingValue = i + 1;
+            return (
+              <label key={i}>
+                <input
+                  type="radio"
+                  name="rating"
+                  id=""
+                  onClick={() => setRating(ratingValue)}
+                  value={ratingValue}
+                />
+                <FaStar
+                  className="str"
+                  color={ratingValue <= (hover || rating) ? "ffc107" : "e4e5e9"}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
+        </div>
+        <form action="">
+          <div className="commentArea_textarea">
+            <label htmlFor="textarea">COMMENT:</label>
+            <textarea
+              onChange={(e) => setMessage(e.target.value)}
+              name=""
+              id="textarea"
+              cols=""
+              rows="" 
+            ></textarea>
+          </div>
+          <div className="commentArea_btn">
+            <button onClick={() => postComment()}>ADD COMMENT</button>
+          </div>
+        </form>
+      </div>
+      <div className="sharedComments">
+        {skincareComments
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((item) => (
+            <div className="userComment" key={item._id}>
+              <div className="userSide">
+                {/* <img src={item.userId.image} alt="" /> */}
+                {/* <p className="userName">{item.userId.name}</p> */}
+              </div>
+              <p className="comment">{item.content}</p>
+            </div>
+          ))}
       </div>
     </>
   );

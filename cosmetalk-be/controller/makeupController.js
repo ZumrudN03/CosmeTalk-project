@@ -1,4 +1,5 @@
 import { MakeupModel } from "../model/makeupModel.js";
+import { MakeUpReviewModel } from "../model/makeupReviewModel.js";
 
 export const GetAllMakeUpProducts = async (req, res) => {
   try {
@@ -96,5 +97,22 @@ export const DeleteMakeUpProductByID = async (req, res) => {
     res.send("MakeUp Product Deleted!");
   } catch (error) {
     res.send(error.message);
+  }
+};
+
+export const GetMakeUpProductWithComments = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const makeup = await MakeUpReviewModel.find({ makeupId: id }).populate(
+      "userId",
+      "-password"
+    );
+    if (!makeup) {
+      return res.status(404).send("Makeup Product not found");
+    }
+
+    res.send(makeup);
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 };

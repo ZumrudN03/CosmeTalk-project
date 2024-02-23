@@ -1,12 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import "./index.scss";
-import CommentArea from "../../Components/CommentArea";
+import { UserTokenContext } from "../../Context/UserTokenContext";
+import { FaStar } from "react-icons/fa";
 
 function MakeUpReviewsCardDetail() {
   const { id } = useParams();
   const [makeupDetail, setMakeupDetail] = useState([]);
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [message, setMessage] = useState("");
+  const { decodedToken } = useContext(UserTokenContext);
+  const [makeupComments, setmakeupComments] = useState([]);
+
+  // async function postRating() {
+  //   try {
+  //     const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         userId: decodedToken.userId,
+  //         makeupId: id,
+  //         rating: rating,
+  //       }),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // }
+
+  async function postComment() {
+    try {
+      const response = await fetch("http://localhost:3100/makeupreview/", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: decodedToken.userId,
+          makeupId: id,
+          content: message,
+          rating: rating,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      await fetchComments();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  async function fetchComments(e) {
+    try {
+      const response = await fetch(
+        "http://localhost:3100/makeup/makeupWithReview/" + id
+      );
+      const data = await response.json();
+      setmakeupComments(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   function getFetchMekaUpDetail() {
     fetch("http://localhost:3100/makeup/" + id)
@@ -38,13 +96,7 @@ function MakeUpReviewsCardDetail() {
               alt=""
             />
             <p className="makeupDetail_name">{makeupDetail.name}</p>
-            <div className="makeupDetail_icon">
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-            </div>
+
             <p className="makeupDetail_about">{makeupDetail.about}</p>
             <div className="makeupDetail_ratings">
               <div className="makeupDetail_rating">
@@ -72,7 +124,6 @@ function MakeUpReviewsCardDetail() {
                 <p>Longevity</p>
               </div>
             </div>
-          <CommentArea/>
           </div>
           <div className="makeupDetail_review">
             <div>
@@ -83,7 +134,25 @@ function MakeUpReviewsCardDetail() {
               </div>
               <ul>
                 <li>
-                  Likes: <i className="fa-regular fa-heart"></i>
+                  Likes:
+                  <div className="stars">
+                    {[...Array(5)].map((star, i) => {
+                      const ratingValue = i + 1;
+                      return (
+                        <label key={i}>
+                          <input type="radio" name="rating" id="" />
+                          <FaStar
+                            className="str"
+                            color={
+                              ratingValue <= (hover || rating)
+                                ? "ffc107"
+                                : "e4e5e9"
+                            }
+                          />
+                        </label>
+                      );
+                    })}
+                  </div>
                 </li>
                 <li>
                   Comments: <i className="fa-regular fa-comment"></i>
@@ -120,6 +189,61 @@ function MakeUpReviewsCardDetail() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="commentArea">
+        <div className="commentArea_header">
+          <p>Leave a Reply</p>
+        </div>
+        <div className="makeupDetail_icon">
+          {[...Array(5)].map((star, i) => {
+            const ratingValue = i + 1;
+            return (
+              <label key={i}>
+                <input
+                  type="radio"
+                  name="rating"
+                  id=""
+                  onClick={() => setRating(ratingValue)}
+                  value={ratingValue}
+                />
+                <FaStar
+                  className="str"
+                  color={ratingValue <= (hover || rating) ? "ffc107" : "e4e5e9"}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
+        </div>
+        <form action="">
+          <div className="commentArea_textarea">
+            <label htmlFor="textarea">COMMENT:</label>
+            <textarea
+              onChange={(e) => setMessage(e.target.value)}
+              name=""
+              id="textarea"
+              cols=""
+              rows=""
+            ></textarea>
+          </div>
+          <div className="commentArea_btn">
+            <button onClick={() => postComment()}>ADD COMMENT</button>
+          </div>
+        </form>
+      </div>
+      <div className="sharedComments">
+        {makeupComments
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((item) => (
+            <div className="userComment" key={item._id}>
+              <div className="userSide">
+                {/* <img src={item.userId.image} alt="" /> */}
+                {/* <p className="userName">{item.userId.name}</p> */}
+              </div>
+              <p className="comment">{item.content}</p>
+            </div>
+          ))}
       </div>
     </>
   );

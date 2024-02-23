@@ -57,6 +57,17 @@ function AdminNav() {
             alt="create--v1"
           />
         </NavLink>
+        <NavLink
+          to="/admin/user"
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#F6C4A7" : "",
+            };
+          }}
+        >
+          USER{" "}
+          <img width="20" height="20" src="https://img.icons8.com/fluency/48/user-male-circle--v1.png" alt="user-male-circle--v1"/>
+        </NavLink>
       </div>
     </div>
   );

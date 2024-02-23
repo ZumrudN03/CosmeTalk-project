@@ -48,18 +48,7 @@ function SkinCareReviewsCards() {
           >
             All
           </SwiperSlide>
-          <SwiperSlide
-            className="SwiperSlide"
-            onClick={() => FilterProduct("MOISTURIZER")}
-          >
-            Moisturizer
-          </SwiperSlide>
-          <SwiperSlide
-            className="SwiperSlide"
-            onClick={() => FilterProduct("SUNSCREEN")}
-          >
-            Sunscreen
-          </SwiperSlide>
+
           <SwiperSlide
             className="SwiperSlide"
             onClick={() => FilterProduct("SERUM")}
@@ -74,9 +63,21 @@ function SkinCareReviewsCards() {
           </SwiperSlide>
           <SwiperSlide
             className="SwiperSlide"
+            onClick={() => FilterProduct("SUNSCREEN")}
+          >
+            Sunscreen
+          </SwiperSlide>
+          <SwiperSlide
+            className="SwiperSlide"
             onClick={() => FilterProduct("MASK")}
           >
             Mask
+          </SwiperSlide>
+          <SwiperSlide
+            className="SwiperSlide"
+            onClick={() => FilterProduct("MOISTURIZER")}
+          >
+            Moisturizer
           </SwiperSlide>
         </Swiper>
       </div>

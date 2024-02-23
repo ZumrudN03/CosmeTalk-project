@@ -7,6 +7,7 @@
   &_location {
     display: flex;
     gap: 10px;
+    padding: 0px 5px;
     &_makeup {
       color: gray;
       padding-left: 10px;
@@ -34,7 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    height: 380px;
+    height: 410px;
     &_header {
       display: flex;
       justify-content: space-between;
@@ -59,6 +60,18 @@
         font-size: 14px;
         color: gray;
         font-weight: 600;
+        .stars {
+          max-width: 100%;
+          display: flex;
+          gap: 3px;
+          .str {
+            font-size: 14px;
+            color: #ffc107;
+          }
+          input[type="radio"] {
+            display: none;
+          }
+        }
         .reviewDetail_categories {
           font-size: 12px;
           display: flex;
@@ -105,11 +118,17 @@
       font-weight: 600;
     }
     .skincareDetail_icon {
-      display: flex;
+      max-width: 100%;
       justify-content: center;
-      padding: 10px 0px 20px 0px;
-      i {
-        color: #353535;
+      display: flex;
+      gap: 5px;
+      .str {
+        font-size: 20px;
+        cursor: pointer;
+        transition: 300ms;
+      }
+      input[type="radio"] {
+        display: none;
       }
     }
     .skincareDetail_about {
@@ -124,8 +143,10 @@
       padding: 40px;
       justify-content: space-between;
       margin-bottom: 50px;
+      flex-wrap: wrap;
       .skincareDetail_rating {
         text-align: center;
+        padding: 10px;
         p {
           font-size: 18px;
           font-weight: 600;
@@ -134,6 +155,79 @@
           }
         }
       }
+    }
+  }
+}
+
+.sharedComments {
+  max-width: 80%;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .userComment {
+    width: 100%;
+    border: 1px solid lightgray;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .userSide {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 17px;
+      letter-spacing: 1px;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid lightgray;
+      }
+      .userName{
+        font-size: 14px;
+        color: #f36eae;
+      }
+
+    }
+    .comment{
+      color: #191919;
+      font-size: 15px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .skincareDetail {
+    &_desc {
+      .skincareDetail_thumbnail {
+        width: 100%;
+      }
+      .skincareDetail_name {
+        font-size: 26px;
+      }
+    }
+  }
+  .skincareDetail_header {
+    .skincareDetail_location {
+      padding: 0px 5px;
+      &_skincare {
+        font-size: 14px;
+        text-align: center;
+      }
+      &_home {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media  (max-width: 991.98px) {
+  .skincareDetail {
+    display: flex;
+    flex-direction: column;
+    &_review {
+      width: 100%;
     }
   }
 }

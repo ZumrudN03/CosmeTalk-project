@@ -7,8 +7,8 @@ import { makeupRoute } from "./routers/makeupRouter.js";
 import { skincareRoute } from "./routers/skincareRouter.js";
 import { blogRoute } from "./routers/blogRouter.js";
 import { userRoute } from "./routers/userRouter.js";
-import { storage } from "./Middleware/multerStorage.js";
 import { authRoute } from "./routers/authRouter.js";
+import { makeupReviewRoute } from "./routers/makeupReviewRouter.js";
 
 const app = express();
 
@@ -19,6 +19,7 @@ app.use("/skincare", skincareRoute);
 app.use("/blog", blogRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
+app.use("/makeupreview", makeupReviewRoute);
 app.use("/static", express.static("public"));
 
 mongoose

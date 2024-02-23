@@ -96,9 +96,71 @@
     .SwiperSlide {
       transition: 300ms;
       cursor: pointer;
-      &:hover{
+      &:hover {
         color: #f6c4a7;
       }
     }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .skincare_categories {
+    max-width: 80%;
+    margin: 30px auto;
+    .mySwiper {
+      .SwiperSlide {
+        font-size: 10px;
+      }
+    }
+  }
+  .skinCareReviewsCards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .skincare_categories {
+    max-width: 70%;
+    margin: 30px auto;
+    .mySwiper {
+      .SwiperSlide {
+        font-size: 12px;
+      }
+    }
+  }
+  .skinCareReviewsCards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .skincare_categories {
+    max-width: 70%;
+    margin: 30px auto;
+    .mySwiper {
+      .SwiperSlide {
+        font-size: 12px;
+      }
+    }
+  }
+  .skinCareReviewsCards {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .skincare_categories {
+    .mySwiper {
+      .SwiperSlide {
+        font-size: 14px;
+      }
+    }
+  }
+  .skinCareReviewsCards {
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }

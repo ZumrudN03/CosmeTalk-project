@@ -100,10 +100,13 @@
   margin: 30px auto;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   p {
+    width: 280px;
     color: #f6c4a7;
     font-weight: 600;
     cursor: pointer;
+    text-align: center;
   }
   .makeup_category_slider {
     text-align: center;
@@ -115,10 +118,59 @@
         font-size: 12px;
         transition: 300ms;
         cursor: pointer;
-        &:hover{
+        &:hover {
           color: #f6c4a7;
         }
       }
     }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .makeUpReviewsCards {
+    display: flex;
+    max-width: 90%;
+    justify-content: center;
+    .makeUpReviewsCard {
+      width: 270px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      margin: 20px 0px;
+      padding: 10px;
+      &_img {
+        width: 220px;
+        height: 220px;
+        img {
+          width: 220px;
+          height: 220px;
+        }
+      }
+      .makeUpReviewsCard_hover {
+        .makeUpReviewsCard_hover_btn {
+          padding: 8px 15px;
+        }
+      }
+    }
+  }
+  .makeup_categories {
+    display: flex;
+    justify-content: center;
+    p {
+      width: 280px;
+      color: #f6c4a7;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      font-size: 14px;
+      height: 50px;
+    }
+    .makeup_category_slider {
+      width: 280px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .makeUpReviewsCards {
+    max-width: 90%;
   }
 }
