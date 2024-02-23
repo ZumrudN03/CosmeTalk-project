@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { UserTokenContext } from "../../Context/UserTokenContext";
 import "./index.scss";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 function Login() {
   const navigate = useNavigate();
   const { addToken } = useContext(UserTokenContext);
-
-  async function handleSubmit(value) {
+  async function handleSubmit(values) {
     try {
       const response = await fetch("http://localhost:3100/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(value),
+        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
@@ -34,6 +35,27 @@ function Login() {
     }
   }
 
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append("email", email);
+  //   formData.append("password", password);
+
+  //   const response = await fetch("http://localhost:3100/auth/login", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  //   const tokenResponse = await response.json();
+  //   const token = tokenResponse.token;
+
+  //   if (!token || typeof token !== "string") {
+  //     throw new Error("Invalid token received from the server");
+  //   }
+
+  //   addToken(token);
+  //   navigate("/");
+  // }
   return (
     <>
       <Helmet>
@@ -43,18 +65,42 @@ function Login() {
         <div className="login_sign">
           <p className="login_logo">CosmeTalk</p>
           <p className="login_signAccount">Sign Into Your Account</p>
-          <form
-            onSubmit={(value, { setSubmitting }) => {
+          <Formik
+            initialValues={{ email: "", password: "" }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email("Invalid email address")
+                .required("Required"),
+              password: Yup.string()
+                .max(15, "Must be 15 characters or less")
+                .required("Required"),
+            })}
+            onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                handleSubmit(value);
+                handleSubmit(values);
                 setSubmitting(false);
               }, 400);
             }}
           >
-            <input type="text" id="email" placeholder="Email Address" />
-            <input type="text" id="password" placeholder="Password" />
-            <button>Login</button>
-          </form>
+            <Form>
+              {/* <p>Login</p> */}
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="example@gmail.com"
+                />
+                <ErrorMessage name="email" />
+              </div>
+              <div className="field">
+                <label htmlFor="password">Password</label>
+                <Field name="password" type="text" placeholder="************" />
+                <ErrorMessage name="password" />
+              </div>
+              <button type="submit">Submit</button>
+            </Form>
+          </Formik>
           <p className="login_register">
             Don't have an account? <Link to={"/register"}>Register here</Link>
           </p>

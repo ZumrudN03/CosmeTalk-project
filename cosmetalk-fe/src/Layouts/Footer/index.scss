@@ -1,0 +1,150 @@
+.footer {
+  border-top: 1px solid lightgray;
+  width: 100%;
+  margin-top: 50px;
+  .footer_follow {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    padding: 60px 0px;
+    align-items: center;
+    p{
+        font-family: "Dancing Script", cursive;
+        color: gray;
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+    .footer_icons{
+        font-size: 14px;
+        display: flex;
+        gap: 10px;
+        i{
+          transition: 300ms;
+          cursor: pointer;
+          &:hover {
+            color: #f6c4a7;
+          }
+        }
+    }
+  }
+  .footer_logo_container {
+    max-width: 100%;
+    background-color: #191919;
+    padding: 15px 0px;
+
+    .footer_logo {
+      max-width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: white;
+        li {
+          cursor: pointer;
+          transition: 300ms;
+          cursor: pointer;
+          font-size: 13px;
+          &:hover {
+            color: #f6c4a7;
+          }
+        }
+      }
+      .footer_cosmetalk {
+        color: white;
+        font-family: "Dancing Script", cursive;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 300ms;
+        cursor: pointer;
+        &:hover {
+          color: #f6c4a7;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 575.98px) { 
+  .footer {
+    .footer_follow {
+      flex-direction: column;
+      gap: 10px;
+      padding: 30px 0px;
+      p{
+          font-family: "Dancing Script", cursive;
+          color: gray;
+          letter-spacing: 1px;
+          font-size: 16px;
+      }
+      .footer_icons{
+          font-size: 14px;
+          display: flex;
+          gap: 10px;
+          i{
+            transition: 300ms;
+            cursor: pointer;
+            &:hover {
+              color: #f6c4a7;
+            }
+          }
+      }
+    }
+    .footer_logo_container {
+      max-width: 100%;
+      background-color: #191919;
+      padding: 15px 0px;
+  
+      .footer_logo {
+        max-width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        img {
+          width: 30px;
+          height: 30px;
+        }
+        ul {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+          color: white;
+          li {
+            cursor: pointer;
+            transition: 300ms;
+            cursor: pointer;
+            font-size: 13px;
+            &:hover {
+              color: #f6c4a7;
+            }
+          }
+        }
+        .footer_cosmetalk {
+          color: white;
+          font-family: "Dancing Script", cursive;
+          font-size: 20px;
+          cursor: pointer;
+          transition: 300ms;
+          cursor: pointer;
+          &:hover {
+            color: #f6c4a7;
+          }
+        }
+      }
+    }
+  }
+  
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) {  }
+
+@media (min-width: 768px) and (max-width: 991.98px) {  }

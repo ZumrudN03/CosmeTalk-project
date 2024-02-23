@@ -42,13 +42,13 @@ function AddMakeUp() {
         }}
         validationSchema={Yup.object({
           thumbnail: Yup.string()
-            .max(200, "Must be 200 characters or less")
+            .max(300, "Must be 300 characters or less")
             .required("Required"),
           name: Yup.string()
             .max(100, "Must be 100 characters or less")
             .required("Required"),
           about: Yup.string()
-            .max(500, "Must be 500 characters or less")
+            .max(1000, "Must be 1000 characters or less")
             .required("Required"),
           category: Yup.string()
             .max(50, "Must be 50 characters or less")

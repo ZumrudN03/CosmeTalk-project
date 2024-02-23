@@ -62,3 +62,45 @@ export const DeleteUserByID = async (req, res) => {
     res.send(error.message);
   }
 };
+
+export const AddToWishlist = async (req, res) => {
+  try {
+    const { userId, skincareId, makeupId } = req.body;
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    user.wishlist.push(skincareId);
+    user.wishlist.push(makeupId);
+
+    await user.save();
+
+    res.send("Film added to wishlist successfully");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+export const deleteFromWatchlist = async (req, res) => {
+  try {
+    const { userId, skincareId, makeupId } = req.body; 
+    const user = await UserModel.findById(userId);
+    
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    const index = user.wishlist.indexOf(filmId);
+    
+    if (index === -1) {
+      return res.status(404).send("Product not found in watchlist");
+    }
+
+    user.wishlist.splice(index, 1);
+    await user.save();
+
+    res.send("Film deleted from watchlist successfully");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};

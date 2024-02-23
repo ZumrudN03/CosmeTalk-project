@@ -68,12 +68,12 @@ function Register() {
             <input
               type="text"
               id="email"
-              placeholder="Email"
+              placeholder="Email Address"
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="register_password">
               <input
-                type="text"
+                type="password"
                 id="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}

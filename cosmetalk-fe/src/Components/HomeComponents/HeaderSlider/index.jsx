@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function HeaderSlider() {
   const [blogCard, setBlogCard] = useState([]);
@@ -32,8 +33,21 @@ function HeaderSlider() {
       >
         {blogCard.map((x) => (
           <SwiperSlide key={x._id} className="SwiperSlide">
+            <div className="slider_hover_container">
+              <div className="header_hover"></div>
+            </div>
             <img src={x.thumbnail} alt="" />
-            <div className="SwiperSlide_title"><p>{x.title}</p></div>
+            <div className="SwiperSlide_textbox">
+              <div className="SwiperSlide_textbox_header">
+                <div className="line"></div>
+                <p>COSMETALK</p>
+                <div className="line"></div>
+              </div>
+              <p className="slider_title">{x.title}</p>
+              <Link to={"/blog"}>
+                <button>Read more</button>
+              </Link>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

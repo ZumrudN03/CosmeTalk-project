@@ -49,27 +49,27 @@ function AddBlog() {
         }}
         validationSchema={Yup.object({
           thumbnail: Yup.string()
-            .max(200, "Must be 200 characters or less")
+            .max(300, "Must be 300 characters or less")
             .required("Required"),
           title: Yup.string()
-            .max(50, "Must be 50 characters or less")
+            .max(150, "Must be 150 characters or less")
             .required("Required"),
-          desc: Yup.string().max(500, "Must be 500 characters or less"),
-          image1: Yup.string().max(200, "Must be 200 characters or less"),
-          image2: Yup.string().max(200, "Must be 200 characters or less"),
-          image3: Yup.string().max(200, "Must be 200 characters or less"),
-          image4: Yup.string().max(200, "Must be 200 characters or less"),
-          image5: Yup.string().max(200, "Must be 200 characters or less"),
-          sub1: Yup.string().max(50, "Must be 50 characters or less"),
-          sub2: Yup.string().max(50, "Must be 50 characters or less"),
-          sub3: Yup.string().max(50, "Must be 50 characters or less"),
-          sub4: Yup.string().max(50, "Must be 50 characters or less"),
-          sub5: Yup.string().max(50, "Must be 50 characters or less"),
-          name1: Yup.string().max(50, "Must be 50 characters or less"),
-          name2: Yup.string().max(50, "Must be 50 characters or less"),
-          name3: Yup.string().max(50, "Must be 50 characters or less"),
-          name4: Yup.string().max(50, "Must be 50 characters or less"),
-          name5: Yup.string().max(50, "Must be 50 characters or less"),
+          desc: Yup.string().max(1000, "Must be 1000 characters or less"),
+          image1: Yup.string().max(300, "Must be 300 characters or less"),
+          image2: Yup.string().max(300, "Must be 300 characters or less"),
+          image3: Yup.string().max(300, "Must be 300 characters or less"),
+          image4: Yup.string().max(300, "Must be 300 characters or less"),
+          image5: Yup.string().max(300, "Must be 300 characters or less"),
+          sub1: Yup.string().max(1000, "Must be 1000 characters or less"),
+          sub2: Yup.string().max(1000, "Must be 1000 characters or less"),
+          sub3: Yup.string().max(1000, "Must be 1000 characters or less"),
+          sub4: Yup.string().max(1000, "Must be 1000 characters or less"),
+          sub5: Yup.string().max(1000, "Must be 1000 characters or less"),
+          name1: Yup.string().max(100, "Must be 100 characters or less"),
+          name2: Yup.string().max(100, "Must be 100 characters or less"),
+          name3: Yup.string().max(100, "Must be 100 characters or less"),
+          name4: Yup.string().max(100, "Must be 100 characters or less"),
+          name5: Yup.string().max(100, "Must be 100 characters or less"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           postBlog(values);
@@ -88,7 +88,7 @@ function AddBlog() {
 
           <label htmlFor="desc">Desc:</label>
           <Field name="desc" type="text" />
-          <ErrorMessage name="desc" />
+          <ErrorMessage component="div" className="error" name="desc" />
 
           <label htmlFor="image1">Image1:</label>
           <Field name="image1" type="text" />

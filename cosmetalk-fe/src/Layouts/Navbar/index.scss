@@ -43,6 +43,11 @@
       display: flex;
       gap: 10px;
       align-items: center;
+      input {
+        outline: none;
+        padding: 0px 5px;
+      }
+
       i {
         font-size: 14px;
         transition: 300ms;
@@ -51,14 +56,17 @@
           color: #f6c4a7;
         }
       }
-      .fa-heart {
+      .fa-user {
         padding: 0px 10px;
         border-left: 2px solid lightgray;
         border-right: 2px solid lightgray;
       }
-      .login_register{
+      .fa-bars {
+        display: none;
+      }
+      .login_register {
         position: relative;
-        &_hover{
+        &_hover {
           position: absolute;
           background-color: white;
           width: 200px;
@@ -72,22 +80,22 @@
           align-items: center;
           border-radius: 10px;
           padding: 10px;
-          img{
+          img {
             width: 70px;
           }
-          .register_btn{
+          .register_btn {
             display: flex;
             flex-direction: column;
             text-align: center;
             gap: 5px;
-            p{
-            font-size: 14px;
-            color: #191919;
-            font-weight: 600;
-            padding: 10px 0px 5px 0px;
+            p {
+              font-size: 14px;
+              color: #191919;
+              font-weight: 600;
+              padding: 10px 0px 5px 0px;
             }
           }
-          a{
+          a {
             padding: 5px 15px;
             border-radius: 40px;
             font-weight: 600;
@@ -95,7 +103,7 @@
             color: white;
             transition: 300ms;
             font-size: 14px;
-            &:hover{
+            &:hover {
               background-color: #f6c4a7;
             }
           }
@@ -104,3 +112,51 @@
     }
   }
 }
+
+.sticky {
+  max-width: 100%;
+  margin: 0 auto;
+  z-index: 5;
+  position: fixed;
+  padding: 15px 78px;
+  top: 0;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 10px 10px -3px rgba(123, 123, 123, 0.2);
+  -moz-box-shadow: 0px 10px 10px -3px rgba(123, 123, 123, 0.2);
+  box-shadow: 0px 10px 10px -3px rgba(123, 123, 123, 0.2);
+  width: 100vw;
+  .navbar_logo {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar_container {
+    .navbar {
+      &_navmenu {
+        display: none;
+      }
+      &_search {
+        .fa-bars {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .navbar_container {
+    .navbar {
+      &_navmenu {
+        display: none;
+      }
+      &_search {
+        .fa-bars {
+          display: block;
+        }
+      }
+    }
+  }
+}
+

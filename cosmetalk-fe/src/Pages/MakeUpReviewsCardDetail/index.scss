@@ -1,10 +1,10 @@
-.makeupDetail {
+.makeupDetail_header {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 0px;
   border-bottom: 1px solid lightgray;
-  &_location {
+  .makeupDetail_location {
     display: flex;
     gap: 10px;
     &_makeup {
@@ -22,12 +22,11 @@
     }
   }
 }
-.makeup_detail {
+.makeupDetail {
   max-width: 80%;
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
-  height: 380px;
   &_review {
     width: 40%;
     border: 1px solid lightgray;
@@ -35,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    height: 380px;
     &_header {
       display: flex;
       justify-content: space-between;
@@ -117,7 +117,7 @@
         color: rgb(84, 84, 84);
         padding: 40px 0px;
     }
-    .makeup_detail_rating{
+    .makeupDetail_ratings{
         width: 100%;
         border: 1px solid lightgray;
         display: flex;

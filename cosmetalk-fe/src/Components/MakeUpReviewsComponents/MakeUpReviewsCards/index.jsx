@@ -1,43 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 function MakeUpReviewsCards() {
   const [makeUpCard, setMakeUpCard] = useState([]);
-  const [filterData, setFilterData] = useState("All")
-  const [isOpenFace, setIsOpenFace] = useState(false);
-  const [isOpenEyes, setIsOpenEyes] = useState(false);
-  const [isOpenLips, setIsOpenLips] = useState(false);
-  const [isIconUpFace, setIsIconUpFace] = useState(false);
-  const [isIconUpEyes, setIsIconUpEyes] = useState(false);
-  const [isIconUpLips, setIsIconUpLips] = useState(false);
-
-
-  function onClickFunc(category) {
-    if (category === "face") {
-      setIsOpenFace(!isOpenFace);
-      setIsOpenEyes(false);
-      setIsOpenLips(false);
-      setIsIconUpFace(!isIconUpFace);
-      setIsIconUpEyes(false);
-      setIsIconUpLips(false);
-    } else if (category === "eyes") {
-      setIsOpenEyes(!isOpenEyes);
-      setIsOpenFace(false);
-      setIsOpenLips(false);
-      setIsIconUpEyes(!isIconUpEyes);
-      setIsIconUpFace(false);
-      setIsIconUpLips(false);
-    } else if (category === "lips") {
-      setIsOpenLips(!isOpenLips);
-      setIsOpenFace(false);
-      setIsOpenEyes(false);
-      setIsIconUpLips(!isIconUpLips);
-      setIsIconUpFace(false);
-      setIsIconUpEyes(false);
-    }
-  }
-
+  const [filterData, setFilterData] = useState("All");
   function getFetchMakeUpProducts() {
     fetch("http://localhost:3100/makeup")
       .then((res) => res.json())
@@ -49,71 +21,181 @@ function MakeUpReviewsCards() {
 
   const FilterProduct = (subCategory) => {
     setFilterData(subCategory);
-  }
+  };
 
-  const dataProducts = filterData === "All" 
-    ? makeUpCard 
-    : makeUpCard.filter((item) => item.subCategory === filterData);
+  const dataProducts =
+    filterData === "All"
+      ? makeUpCard
+      : makeUpCard.filter((item) => item.subCategory === filterData);
 
   return (
     <>
       <div className="makeup_categories">
-      <button onClick={() => FilterProduct("All")} className="all_btn">All</button>
-        <div className="isOpen_Container">
-          <p onClick={() => onClickFunc("face")}>
-            Face
-            <i
-              className={`fa-solid ${
-                isIconUpFace ? "fa-angle-up" : "fa-angle-down"
-              }`}
-            ></i>
-          </p>
-          {isOpenFace && (
-            <div className="makeup_categories_container face">
-              <button>Bronzer</button>
-              <button>Blush</button>
-              <button>Concealer</button>
-              <button>Contour</button>
-              <button>Foundation</button>
-              <button onClick={()=>FilterProduct("HIGHLIGHTER")}>Highlighter</button>
-              <button>Primer</button>
-              <button>Powder</button>
-            </div>
-          )}
+        <p onClick={() => FilterProduct("All")}>ALL</p>
+        <div className="makeup_category_slider">
+          <p>FACE</p>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("BRONZER")}
+            >
+              Bronzer
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("BLUSH")}
+            >
+              Blush
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("CONCEALER")}
+            >
+              Concealer
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("CONTOUR")}
+            >
+              Contour
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("FOUNDATION")}
+            >
+              Foundation
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("HIGHLIGHTER")}
+            >
+              Highlighter
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("PRIMER")}
+            >
+              Primer
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("POWDER")}
+            >
+              Powder
+            </SwiperSlide>
+          </Swiper>
         </div>
-        <div className="isOpen_Container">
-          <p onClick={() => onClickFunc("eyes")}>
-            Eyes
-            <i
-              className={`fa-solid ${
-                isIconUpEyes ? "fa-angle-up" : "fa-angle-down"
-              }`}
-            ></i>
-          </p>
-          {isOpenEyes && (
-            <div className="makeup_categories_container eyes">
-              <button onClick={()=>FilterProduct("EYEBROW")}>Eyebrow</button>
-              <button onClick={()=>FilterProduct("EYESHADOW")}>Eyeshadow</button>
-              <button onClick={()=>FilterProduct("MASKARA")}>Mascara</button>
-            </div>
-          )}
+        <div className="makeup_category_slider">
+          <p>EYES</p>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("EYEBROW")}
+            >
+              Eyebrow
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("EYESHADOW")}
+            >
+              Eyeshadow
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("MASKARA")}
+            >
+              Mascara
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("EYEBROW")}
+            >
+              Eyebrow
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("EYESHADOW")}
+            >
+              Eyeshadow
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("MASKARA")}
+            >
+              Mascara
+            </SwiperSlide>
+          </Swiper>
         </div>
-        <div className="isOpen_Container">
-          <p onClick={() => onClickFunc("lips")}>
-            Lips
-            <i
-              className={`fa-solid ${
-                isIconUpLips ? "fa-angle-up" : "fa-angle-down"
-              }`}
-            ></i>
-          </p>
-          {isOpenLips && (
-            <div className="makeup_categories_container lips">
-              <button>Lip Pencil</button>
-              <button onClick={()=>FilterProduct("LIPGLOSS")}>Lip Gloss</button>
-              <button>Lipstick</button>
-            </div>
-          )}
+        <div className="makeup_category_slider">
+          <p>LIPS</p>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPGLOSS")}
+            >
+              Lip Gloss
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPPENCIL")}
+            >
+              Lip Pencil
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPSTICK")}
+            >
+              Lipstick
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPGLOSS")}
+            >
+              Lip Gloss
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPPENCIL")}
+            >
+              Lip Pencil
+            </SwiperSlide>
+            <SwiperSlide
+              className="SwiperSlide"
+              onClick={() => FilterProduct("LIPSTICK")}
+            >
+              Lipstick
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
       <div className="makeUpReviewsCards">

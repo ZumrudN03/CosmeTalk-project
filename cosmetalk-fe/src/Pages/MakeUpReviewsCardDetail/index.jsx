@@ -22,7 +22,7 @@ function MakeUpReviewsCardDetail() {
         <title>MakeUp Reviews Detail</title>
       </Helmet>
       <div>
-        <div className="makeupDetail">
+        <div className="makeupDetail_header">
           <div className="makeupDetail_location">
             <Link to={"/"}>
               <p className="makeupDetail_location_home">Home</p>
@@ -30,8 +30,8 @@ function MakeUpReviewsCardDetail() {
             <p className="makeupDetail_location_makeup">{makeupDetail.name}</p>
           </div>
         </div>
-        <div className="makeup_detail">
-          <div className="makeup_detail_desc">
+        <div className="makeupDetail">
+          <div className="makeupDetail_desc">
             <img
               className="makeupDetail_thumbnail"
               src={makeupDetail.thumbnail}
@@ -46,7 +46,7 @@ function MakeUpReviewsCardDetail() {
               <i className="fa-solid fa-star"></i>
             </div>
             <p className="makeupDetail_about">{makeupDetail.about}</p>
-            <div className="makeup_detail_rating">
+            <div className="makeupDetail_ratings">
               <div className="makeupDetail_rating">
                 <p>
                   <span>{makeupDetail.pigmentation}</span> / 5
@@ -74,9 +74,9 @@ function MakeUpReviewsCardDetail() {
             </div>
           <CommentArea/>
           </div>
-          <div className="makeup_detail_review">
-            <div className="makeup_detail_review_reviewDetail">
-              <div className="makeup_detail_review_header">
+          <div className="makeupDetail_review">
+            <div>
+              <div className="makeupDetail_review_header">
                 <div className="line"></div>
                 <h3>REVIEW DETAILS</h3>
                 <div className="line"></div>
@@ -103,8 +103,8 @@ function MakeUpReviewsCardDetail() {
                 </li>
               </ul>
             </div>
-            <div className="makeup_detail_review_info">
-              <div className="makeup_detail_review_header">
+            <div>
+              <div className="makeupDetail_review_header">
                 <div className="line"></div>
                 <h3>PRODUCT INFO</h3>
                 <div className="line"></div>

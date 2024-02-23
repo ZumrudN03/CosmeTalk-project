@@ -4,7 +4,6 @@ import Brands from "./Pages/Brands";
 import "./assets/reset.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./Pages/About";
-import Wishlist from "./Pages/Wishlist";
 import Blog from "./Pages/Blog";
 import BlogDetail from "./Pages/BlogDetail";
 import SkinCareReviews from "./Pages/SkinCareReviews";
@@ -37,25 +36,32 @@ function App() {
             <Route path="/brands" element={<Brands />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/blogdetail/:id" element={<BlogDetail />} />
-            <Route path="/makeupcarddetail/:id" element={<MakeUpReviewsCardDetail />} />
-            <Route path="/skincarecarddetail/:id" element={<SkinCareReviewsCardDetail />} />
-
+            <Route
+              path="/makeupcarddetail/:id"
+              element={<MakeUpReviewsCardDetail />}
+            />
+            <Route
+              path="/skincarecarddetail/:id"
+              element={<SkinCareReviewsCardDetail />}
+            />
           </Route>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminPanel />} />
-            <Route path="/admin/makeup" element={<AdminMakeUp/>}/>
-            <Route path="/admin/skincare" element={<AdminSkinCare/>}/>
-            <Route path="/admin/blog" element={<AdminBlog/>}/>
-            <Route path="/admin/addmakeup" element={<AddMakeUp/>}/>
-            <Route path="/admin/updatemakeup/:id" element={<UpdateMakeUp/>}/>
-            <Route path="/admin/addskincare" element={<AddSkinCare/>}/>
-            <Route path="/admin/addblog" element={<AddBlog/>}/>
-            <Route path="/admin/updateskincare/:id" element={<UpdateSkinCare/>}/>
-            <Route path="/admin/updateblog/:id" element={<UpdateBlog/>}/>
+            <Route path="/admin/makeup" element={<AdminMakeUp />} />
+            <Route path="/admin/skincare" element={<AdminSkinCare />} />
+            <Route path="/admin/blog" element={<AdminBlog />} />
+            <Route path="/admin/addmakeup" element={<AddMakeUp />} />
+            <Route path="/admin/updatemakeup/:id" element={<UpdateMakeUp />} />
+            <Route path="/admin/addskincare" element={<AddSkinCare />} />
+            <Route path="/admin/addblog" element={<AddBlog />} />
+            <Route
+              path="/admin/updateskincare/:id"
+              element={<UpdateSkinCare />}
+            />
+            <Route path="/admin/updateblog/:id" element={<UpdateBlog />} />
           </Route>
         </Routes>
       </BrowserRouter>

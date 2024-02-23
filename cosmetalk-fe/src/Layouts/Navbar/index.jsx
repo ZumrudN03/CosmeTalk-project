@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./index.scss";
+import { UserTokenContext } from "../../Context/UserTokenContext";
+import UserProfile from "../../Components/UserProfile";
 
 function Navbar() {
+  const { decodedToken } = useContext(UserTokenContext);
+  const [showProfile, setShowProfile] = useState(false);
+  const [isSticky, setSticky] = useState(false);
+  const [showInput, setShowInput] = useState(false)
+  const [hiddenNav, setHiddenNav] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+
+      if (offset > 135) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  function showNavmenu() {
+    setHiddenNav(!hiddenNav)
+  }
   return (
-    <div className="navbar_container">
+    <div className={`navbar_container ${isSticky ? "sticky" : ""}`}>
       <div className="navbar_logo">
         <img src="../src/assets/image/CosmeTalk-logo.png" alt="" />
       </div>
@@ -100,11 +128,27 @@ function Navbar() {
           </ul>
         </div>
         <div className="navbar_search">
-          <Link to={"/login"}><i className="fa-regular fa-user"></i></Link>
-          <Link to={"/wishlist"}>
-            <i className="fa-regular fa-heart"></i>
-          </Link>
-          <i className="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-bars" onClick={showNavmenu}></i>
+          {/* <input type="text" />
+        <i className="fa-solid fa-magnifying-glass"></i> */}
+          {decodedToken ? (
+            <div className="showProfile">
+              <p onClick={() => setShowProfile(!showProfile)}>
+                {showProfile ? (
+                  <i className="fa-solid fa-user"></i>
+                ) : (
+                  <>
+                    <i className="fa-regular fa-user"></i>
+                  </>
+                )}
+              </p>
+              {showProfile ? <UserProfile /> : ""}
+            </div>
+          ) : (
+            <NavLink to={"/login"}>
+              <i className="fa-regular fa-user"></i>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

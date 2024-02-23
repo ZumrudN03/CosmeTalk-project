@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import BrandCards from "../../Components/BrandComponents/BrandCards";
 
 function Brands() {
+
   return (
     <>
       <Helmet>
@@ -18,6 +20,7 @@ function Brands() {
           <p className="brands_location_brands">Brands</p>
         </div>
       </div>
+      <BrandCards/>
     </>
   );
 }
