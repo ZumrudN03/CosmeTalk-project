@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import { BASE_URL } from "../../../config";
 
 function LatestPostSection() {
   const [blogCard, setBlogCard] = useState([]);
 
   function getFetchBlogCards() {
-    fetch("http://localhost:3100/blog")
+    fetch(`${BASE_URL}/blog`)
       .then((res) => res.json())
       .then((data) => setBlogCard(data));
   }
@@ -17,7 +18,7 @@ function LatestPostSection() {
   return (
     <div className="latestPostSection">
       {blogCard.map((x) => (
-        <div  key={x._id} className="latestPostSectionCard">
+        <div key={x._id} className="latestPostSectionCard">
           <img className="latestPostSectionCard_img" src={x.thumbnail} alt="" />
           <p className="latestPostSectionCard_title">{x.title}</p>
           <button className="latestPostSectionCard_btn">

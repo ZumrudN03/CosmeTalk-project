@@ -44,7 +44,7 @@ export const register = async (req, res) => {
       username,
       password: hash,
       email,
-      profilePhoto: "http://localhost:3100/static/" + req.static,
+      profilePhoto: "https://cosmetalk-project.onrender.com/static/" + req.static,
     });
     await newUser.save();
 

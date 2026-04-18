@@ -6,13 +6,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { BASE_URL } from "../../../config";
 
 function SkinCareReviewsCards() {
   const [skinCareCard, setSkinCareCard] = useState([]);
   const [filterData, setFilterData] = useState("All");
 
   function getFetchSkinCareProducts() {
-    fetch("http://localhost:3100/skincare")
+    fetch(`${BASE_URL}/skincare`)
       .then((res) => res.json())
       .then((data) => setSkinCareCard(data));
   }

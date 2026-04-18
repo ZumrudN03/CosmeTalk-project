@@ -5,13 +5,14 @@ import { UserTokenContext } from "../../Context/UserTokenContext";
 import "./index.scss";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { BASE_URL } from "../../config";
 
 function Login() {
   const navigate = useNavigate();
   const { addToken } = useContext(UserTokenContext);
   async function handleSubmit(values) {
     try {
-      const response = await fetch("http://localhost:3100/auth/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -42,7 +43,7 @@ function Login() {
   //   formData.append("email", email);
   //   formData.append("password", password);
 
-  //   const response = await fetch("http://localhost:3100/auth/login", {
+  //   const response = await fetch(`${BASE_URL}/auth/login`, {
   //     method: "POST",
   //     body: formData,
   //   });

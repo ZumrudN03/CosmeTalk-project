@@ -3,12 +3,13 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
+import { BASE_URL } from "../../../config";
 
 function AddBlog() {
   const navigate = useNavigate();
 
   function postBlog(values) {
-    fetch("http://localhost:3100/blog", {
+    fetch(`${BASE_URL}/blog`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {

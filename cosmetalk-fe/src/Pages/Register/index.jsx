@@ -4,6 +4,7 @@ import { UserTokenContext } from "../../Context/UserTokenContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import "./index.scss";
+import { BASE_URL } from "../../config";
 
 function Register() {
   const { addToken } = useContext(UserTokenContext);
@@ -34,7 +35,7 @@ function Register() {
     formData.append("password", password);
     formData.append("profilePhoto", profilePhoto);
 
-    const response = await fetch("http://localhost:3100/auth/register", {
+    const response = await fetch(`${BASE_URL}/auth/register`, {
       method: "POST",
       body: formData,
     });

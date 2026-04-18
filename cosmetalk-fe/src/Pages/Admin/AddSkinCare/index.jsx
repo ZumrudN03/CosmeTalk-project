@@ -3,11 +3,12 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../config";
 
 function AddSkinCare() {
   const navigate = useNavigate();
   function postSkinCare(values) {
-    fetch("http://localhost:3100/skincare", {
+    fetch(`${BASE_URL}/skincare`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {

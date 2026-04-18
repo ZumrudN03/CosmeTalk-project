@@ -1,0 +1,1 @@
+export const BASE_URL = "https://cosmetalk-project.onrender.com";

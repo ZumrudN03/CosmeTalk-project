@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../../config";
 
 function AdminBlog() {
   const [adminBlog, setAdminBlog] = useState([]);
 
   function getFetchBlogs() {
-    fetch("http://localhost:3100/blog")
+    fetch(`${BASE_URL}/blog`)
       .then((res) => res.json())
       .then((data) => setAdminBlog(data));
   }
@@ -15,7 +16,7 @@ function AdminBlog() {
   }, []);
 
   async function deleteBlog(id) {
-    await fetch("http://localhost:3100/blog/" + id, {
+    await fetch(`${BASE_URL}/blog/` + id, {
       method: "DELETE",
     });
     await getFetchBlogs();

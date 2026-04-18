@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import "./index.scss";
 import { UserTokenContext } from "../../Context/UserTokenContext";
 import { FaStar } from "react-icons/fa";
+import { BASE_URL } from "../../config";
 
 function MakeUpReviewsCardDetail() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ function MakeUpReviewsCardDetail() {
 
   async function fetchRating() {
     try {
-      const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
+      const response = await fetch(`${BASE_URL}/makeupreview/makeupavarage`, {
         method: "POST",
         body: JSON.stringify({
           makeupId: id,
@@ -47,7 +48,7 @@ function MakeUpReviewsCardDetail() {
 
   async function postComment() {
     try {
-      const response = await fetch("http://localhost:3100/makeupreview/", {
+      const response = await fetch(`${BASE_URL}/makeupreview/`, {
         method: "POST",
         body: JSON.stringify({
           userId: decodedToken.userId,
@@ -67,7 +68,7 @@ function MakeUpReviewsCardDetail() {
   async function fetchComments(e) {
     try {
       const response = await fetch(
-        "http://localhost:3100/makeup/makeupWithReview/" + id
+        `${BASE_URL}/makeup/makeupWithReview/` + id
       );
       const data = await response.json();
       setmakeupComments(data);
@@ -80,7 +81,7 @@ function MakeUpReviewsCardDetail() {
   }, []);
 
   function getFetchMekaUpDetail() {
-    fetch("http://localhost:3100/makeup/" + id)
+    fetch(`${BASE_URL}/makeup/` + id)
       .then((res) => res.json())
       .then((data) => setMakeupDetail(data));
   }

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./index.scss";
+import { BASE_URL } from "../../config";
 
 function BlogDetail() {
   const { id } = useParams();
   const [blogDetail, setBlogDetail] = useState([]);
 
   function getFetchBlogDetail() {
-    fetch("http://localhost:3100/blog/" + id)
+    fetch(`${BASE_URL}/blog/` + id)
       .then((res) => res.json())
       .then((data) => setBlogDetail(data));
   }

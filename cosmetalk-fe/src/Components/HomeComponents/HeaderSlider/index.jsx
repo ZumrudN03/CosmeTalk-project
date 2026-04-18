@@ -6,12 +6,13 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../../config";
 
 function HeaderSlider() {
   const [blogCard, setBlogCard] = useState([]);
 
   function getFetchBlogCards() {
-    fetch("http://localhost:3100/blog")
+    fetch(`${BASE_URL}/blog`)
       .then((res) => res.json())
       .then((data) => setBlogCard(data));
   }

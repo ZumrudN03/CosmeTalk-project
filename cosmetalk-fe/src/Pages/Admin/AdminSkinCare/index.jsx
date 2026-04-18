@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "./index.scss"
 import { Link } from "react-router-dom";
+import { BASE_URL } from '../../../config';
 
 
 function AdminSkinCare() {
   const [adminSkinCare, setAdminSkinCare] = useState([]);
 
   function getFetchSkinCareProducts() {
-    fetch("http://localhost:3100/skincare")
+    fetch(`${BASE_URL}/skincare`)
       .then((res) => res.json())
       .then((data) => setAdminSkinCare(data));
   }
@@ -16,7 +17,7 @@ function AdminSkinCare() {
   }, []);
 
   async function deleteSkinCare(id) {
-    await fetch("http://localhost:3100/skincare/" + id, {
+    await fetch(`${BASE_URL}/skincare/` + id, {
       method: "DELETE",
     });
     await getFetchSkinCareProducts();

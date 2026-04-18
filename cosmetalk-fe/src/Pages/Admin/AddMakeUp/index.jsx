@@ -3,11 +3,12 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./index.scss"
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../config";
 
 function AddMakeUp() {
   const navigate = useNavigate()
   function postMakeUp(values) {
-    fetch("http://localhost:3100/makeup", {
+    fetch(`${BASE_URL}/makeup`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {

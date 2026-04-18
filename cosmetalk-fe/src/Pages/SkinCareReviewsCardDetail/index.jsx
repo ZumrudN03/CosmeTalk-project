@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { UserTokenContext } from "../../Context/UserTokenContext";
 import { FaStar } from "react-icons/fa";
+import { BASE_URL } from "../../config";
 
 function SkinCareReviewsCardDetail() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function SkinCareReviewsCardDetail() {
 
   async function fetchRating() {
     try {
-      const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
+      const response = await fetch(`${BASE_URL}/makeupreview/makeupavarage`, {
         method: "POST",
         body: JSON.stringify({
           skincareId: id,
@@ -46,7 +47,7 @@ function SkinCareReviewsCardDetail() {
 
   async function postComment() {
     try {
-      const response = await fetch("http://localhost:3100/makeupreview/", {
+      const response = await fetch(`${BASE_URL}/makeupreview/`, {
         method: "POST",
         body: JSON.stringify({
           userId: decodedToken.userId,
@@ -66,7 +67,7 @@ function SkinCareReviewsCardDetail() {
   async function fetchComments(e) {
     try {
       const response = await fetch(
-        "http://localhost:3100/skincare/skincareWithReview/" + id
+        `${BASE_URL}/skincare/skincareWithReview/` + id
       );
       const data = await response.json();
       setskincareComments(data);
@@ -80,7 +81,7 @@ function SkinCareReviewsCardDetail() {
 
 
   function getFetchSkinCareDetail() {
-    fetch("http://localhost:3100/skincare/" + id)
+    fetch(`${BASE_URL}/skincare/` + id)
       .then((res) => res.json())
       .then((data) => setSkincareDetail(data));
   }

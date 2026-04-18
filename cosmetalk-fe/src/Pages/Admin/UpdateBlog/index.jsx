@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./index.scss";
+import { BASE_URL } from "../../../config";
 
 function UpdateBlog() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ function UpdateBlog() {
   const [name5, setname5] = useState("");
 
   async function getFetchBlog() {
-    const responese = await fetch("http://localhost:3100/blog/" + id);
+    const responese = await fetch(`${BASE_URL}/blog/` + id);
     const data = await responese.json();
     setthumbnail(data.thumbnail);
     settitle(data.title);
@@ -51,7 +52,7 @@ function UpdateBlog() {
   }, []);
 
   function updateBlog() {
-    fetch("http://localhost:3100/blog/" + id, {
+    fetch(`${BASE_URL}/blog/` + id, {
       method: "PUT",
       body: JSON.stringify({
         thumbnail: thumbnail,

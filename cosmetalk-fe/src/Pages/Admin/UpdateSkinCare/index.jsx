@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./index.scss"
+import { BASE_URL } from "../../../config";
 
 function UpdateSkinCare() {
     const { id } = useParams();
@@ -17,7 +18,7 @@ function UpdateSkinCare() {
     const [effect, seteffect] = useState("");
 
     async function getFetchSkinCareProducts() {
-        const responese = await fetch("http://localhost:3100/skincare/" + id);
+        const responese = await fetch(`${BASE_URL}/skincare/` + id);
         const data = await responese.json();
         setthumbnail(data.thumbnail);
         setname(data.name);
@@ -35,7 +36,7 @@ function UpdateSkinCare() {
       }, []);
 
       function updateSkinCare() {
-        fetch("http://localhost:3100/skincare/" + id, {
+        fetch(`${BASE_URL}/skincare/` + id, {
           method: "PUT",
           body: JSON.stringify({
             thumbnail: thumbnail,
