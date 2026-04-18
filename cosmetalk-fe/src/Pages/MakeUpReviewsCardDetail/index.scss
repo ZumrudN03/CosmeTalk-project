@@ -230,14 +230,14 @@
   max-width: 80%;
   margin: 30px auto;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   gap: 20px;
   .userComment {
     width: 100%;
     border: 1px solid lightgray;
     padding: 10px;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     gap: 5px;
     .userSide {
       display: flex;

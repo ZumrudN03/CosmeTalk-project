@@ -95,7 +95,7 @@ function Login() {
               </div>
               <div className="field">
                 <label htmlFor="password">Password</label>
-                <Field name="password" type="text" placeholder="************" />
+                <Field name="password" type="password" placeholder="************" />
                 <ErrorMessage name="password" />
               </div>
               <button type="submit">Submit</button>

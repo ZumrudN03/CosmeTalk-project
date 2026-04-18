@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import "./index.scss"
 
 function AdminPanel() {
   return (
@@ -7,7 +8,9 @@ function AdminPanel() {
       <Helmet>
         <title>Admin Panel</title>
       </Helmet>
-      <div className="adminPanel"></div>
+      <div className="adminPanel">
+        {/* <p>Hello,Admin</p> */}
+      </div>
     </>
   );
 }

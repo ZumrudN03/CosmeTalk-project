@@ -1,36 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./index.scss";
 import { UserTokenContext } from "../../Context/UserTokenContext";
 import { FaStar } from "react-icons/fa";
 
 function MakeUpReviewsCardDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [makeupDetail, setMakeupDetail] = useState([]);
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [message, setMessage] = useState("");
   const { decodedToken } = useContext(UserTokenContext);
   const [makeupComments, setmakeupComments] = useState([]);
+  const [savidRating, setsavidRating] = useState(null)
 
-  // async function postRating() {
-  //   try {
-  //     const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         userId: decodedToken.userId,
-  //         makeupId: id,
-  //         rating: rating,
-  //       }),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // }
+  async function fetchRating() {
+    try {
+      const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
+        method: "POST",
+        body: JSON.stringify({
+          makeupId: id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(id);
+      if (data && data.length > 0) {
+        const roundedRating = data[0].averageRating;
+        const roundedRate = parseFloat(roundedRating?.toFixed(1));
+        setsavidRating(roundedRate);
+      }
+    } catch (error) {
+      console.error("Error fetching rating:", error);
+  console.log(id);
+
+    }
+  }
+  // console.log(id);
+  useEffect(() => {
+    fetchRating();
+  }, []);
 
   async function postComment() {
     try {
@@ -136,22 +149,8 @@ function MakeUpReviewsCardDetail() {
                 <li>
                   Likes:
                   <div className="stars">
-                    {[...Array(5)].map((star, i) => {
-                      const ratingValue = i + 1;
-                      return (
-                        <label key={i}>
-                          <input type="radio" name="rating" id="" />
-                          <FaStar
-                            className="str"
-                            color={
-                              ratingValue <= (hover || rating)
-                                ? "ffc107"
-                                : "e4e5e9"
-                            }
-                          />
-                        </label>
-                      );
-                    })}
+                    <span>{savidRating}</span>
+                    <FaStar className="str" color={"ffc107"} />
                   </div>
                 </li>
                 <li>
@@ -238,7 +237,7 @@ function MakeUpReviewsCardDetail() {
           .map((item) => (
             <div className="userComment" key={item._id}>
               <div className="userSide">
-                {/* <img src={item.userId.image} alt="" /> */}
+                <img src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?w=740" alt="" />
                 {/* <p className="userName">{item.userId.name}</p> */}
               </div>
               <p className="comment">{item.content}</p>

@@ -22,7 +22,6 @@ import UpdateBlog from "./Pages/Admin/UpdateBlog";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import MakeUpReviewsCardDetail from "./Pages/MakeUpReviewsCardDetail";
-// import SkinCareReviewsCardDetail from "./Pages/SkinCareReviewsCardDetail";
 import AdminRoute from "./UserPermission/AdminRoute";
 import AdminUsers from "./Pages/Admin/AdminUser";
 import SkinCareReviewsCardDetail from "./Pages/SkinCareReviewsCardDetail";
@@ -52,24 +51,27 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route element={<AdminRoute roles={["admin"]}></AdminRoute>}> */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminPanel />} />
-            <Route path="/admin/makeup" element={<AdminMakeUp />} />
-            <Route path="/admin/skincare" element={<AdminSkinCare />} />
-            <Route path="/admin/blog" element={<AdminBlog />} />
-            <Route path="/admin/user" element={<AdminUsers />} />
-            <Route path="/admin/addmakeup" element={<AddMakeUp />} />
-            <Route path="/admin/updatemakeup/:id" element={<UpdateMakeUp />} />
-            <Route path="/admin/addskincare" element={<AddSkinCare />} />
-            <Route path="/admin/addblog" element={<AddBlog />} />
-            <Route
-              path="/admin/updateskincare/:id"
-              element={<UpdateSkinCare />}
-            />
-            <Route path="/admin/updateblog/:id" element={<UpdateBlog />} />
+          <Route element={<AdminRoute roles={["admin"]}></AdminRoute>}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminPanel />} />
+              <Route path="/admin/makeup" element={<AdminMakeUp />} />
+              <Route path="/admin/skincare" element={<AdminSkinCare />} />
+              <Route path="/admin/blog" element={<AdminBlog />} />
+              <Route path="/admin/user" element={<AdminUsers />} />
+              <Route path="/admin/addmakeup" element={<AddMakeUp />} />
+              <Route
+                path="/admin/updatemakeup/:id"
+                element={<UpdateMakeUp />}
+              />
+              <Route path="/admin/addskincare" element={<AddSkinCare />} />
+              <Route path="/admin/addblog" element={<AddBlog />} />
+              <Route
+                path="/admin/updateskincare/:id"
+                element={<UpdateSkinCare />}
+              />
+              <Route path="/admin/updateblog/:id" element={<UpdateBlog />} />
+            </Route>
           </Route>
-          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </>

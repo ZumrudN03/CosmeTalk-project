@@ -13,6 +13,36 @@ function SkinCareReviewsCardDetail() {
   const [message, setMessage] = useState("");
   const { decodedToken } = useContext(UserTokenContext);
   const [skincareComments, setskincareComments] = useState([]);
+  const [savidRating, setsavidRating] = useState(null)
+
+  async function fetchRating() {
+    try {
+      const response = await fetch("http://localhost:3100/makeupreview/makeupavarage", {
+        method: "POST",
+        body: JSON.stringify({
+          skincareId: id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(id);
+      if (data && data.length > 0) {
+        const roundedRating = data[0].averageRating;
+        const roundedRate = parseFloat(roundedRating?.toFixed(1));
+        setsavidRating(roundedRate);
+      }
+    } catch (error) {
+      console.error("Error fetching rating:", error);
+  console.log(id);
+
+    }
+  }
+  // console.log(id);
+  useEffect(() => {
+    fetchRating();
+  }, []);
 
   async function postComment() {
     try {
@@ -111,25 +141,11 @@ function SkinCareReviewsCardDetail() {
             </div>
             <ul>
               <li>
-                Likes:{" "}
+                Likes:
                 <div className="stars">
-                  {[...Array(5)].map((star, i) => {
-                    const ratingValue = i + 1;
-                    return (
-                      <label key={i}>
-                        <input type="radio" name="rating" id="" />
-                        <FaStar
-                          className="str"
-                          color={
-                            ratingValue <= (hover || rating)
-                              ? "ffc107"
-                              : "e4e5e9"
-                          }
-                        />
-                      </label>
-                    );
-                  })}
-                </div>
+                    <span>{savidRating}</span>
+                    <FaStar className="str" color={"ffc107"} />
+                  </div>
               </li>
               <li>
                 Comments: <i className="fa-regular fa-comment"></i>
@@ -213,7 +229,7 @@ function SkinCareReviewsCardDetail() {
           .map((item) => (
             <div className="userComment" key={item._id}>
               <div className="userSide">
-                {/* <img src={item.userId.image} alt="" /> */}
+                <img src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?w=740" alt="" />
                 {/* <p className="userName">{item.userId.name}</p> */}
               </div>
               <p className="comment">{item.content}</p>

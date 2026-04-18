@@ -51,7 +51,7 @@ function Navbar() {
         <div className="navbar_navmenu">
           <ul>
             <li>
-              <NavLink to="/" onClick={() => setHiddenNav(!hiddenNav)}>
+              <NavLink to="/">
                 HOME
               </NavLink>
             </li>
