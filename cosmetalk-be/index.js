@@ -22,6 +22,10 @@ app.use("/auth", authRoute);
 app.use("/makeupreview", makeupReviewRoute);
 app.use("/static", express.static("public"));
 
+app.get("/", (req, res) => {
+  res.send("CosmeTalk API is running 🚀");
+});
+
 mongoose
   .connect(process.env.DB_SECRET_KEY)
   .then(() => console.log("Connected!"))
