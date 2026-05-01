@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./index.scss";
 import { UserTokenContext } from "../../Context/UserTokenContext";
 import UserProfile from "../../Components/UserProfile";
+import logo from "../../assets/image/CosmeTalk-logo.png";
 
 function Navbar() {
   const { decodedToken } = useContext(UserTokenContext);
@@ -31,7 +32,8 @@ function Navbar() {
   return (
     <div className={`navbar_container ${isSticky ? "sticky" : ""}`}>
       <div className="navbar_logo">
-        <img src="../src/assets/image/CosmeTalk-logo.png" alt="" />
+        {/* <img src="../src/assets/image/CosmeTalk-logo.png" alt="" /> */}
+        <img src={logo} alt="logo" />
       </div>
       <div className="navbar">
         <div className="navbar_icons">
